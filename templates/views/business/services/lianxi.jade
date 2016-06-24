@@ -1,0 +1,22 @@
+extends content-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				include services-header.jade
+				h1.
+					联系我们
+			div(role="main",class="ui-content")
+				div(data-role="collapsibleset",data-content-theme="a",data-iconpos="right",id="set")
+					div(data-role="collapsible",id="set1",data-collapsed="true")
+						h3 公司名称
+						h4 深圳前海云城信息技术有限公司
+				div(data-role="collapsibleset",data-content-theme="a",data-iconpos="right",id="set")
+					div(data-role="collapsible",id="set1",data-collapsed="true")
+						h3 官方号码
+						h4 官方号码：
+							a(href="tel:0755-23764385") 0755-23764385
+				div(data-role="collapsibleset",data-content-theme="a",data-iconpos="right",id="set")
+					div(data-role="collapsible",id="set1",data-collapsed="true")
+						h3 官方微信
+						h4 官方微信：13410704568

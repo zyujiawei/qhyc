@@ -1,0 +1,48 @@
+extends content-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				include services-header.jade
+				h1.
+					我的优惠券
+			div(role="main",class="ui-content")
+				ul(data-role="listview")
+					each post in data.posts
+						li
+							a(href="#postcontent",onclick="loadData(this)",class="postLink",data-transition="slide",data-json=post,data-date=post._.publishedDate.format('YYYY-MM-DD'))
+								div(style="height:90px;width:12px;background-color:#35afe0;position: absolute;left:0px;top:0px;display:none;")
+								img(src="/advert/#{post.image.filename}",style="height:60px;width:60px; position: absolute;left: 25px;top:10px; border-radius: 6px; -webkit-border-radius: 6px; -moz-border-radius: 6px;")
+								div(style="position: absolute;left: 110px; top:8px;font-size:23px;")
+									p #{post.title}
+								div(style="position: absolute;left: 110px; top:40px;color: #999999;font-size:18px;")
+									p(style="color: Grey") #{post._.publishedDate.format('YYYY-MM-DD')}
+		div(data-role="subpage")#postcontent
+			div(data-role="header")
+				include services-header.jade
+				h1#header
+			div(role="main",class="ui-content")
+				input(name="coupons_title",id="coupons_title",type="hidden")
+				input(name="coupons_numbers",id="coupons_numbers",type="hidden")
+				input(name="coupons_type",id="coupons_type",type="hidden")
+				input(name="coupons_image",id="coupons_image",type="hidden")
+				input(name="user_coupons_openid",id="openids",type="hidden")
+				img(id="showImage_coupons",style="height:200px;width:100%;")
+				hr
+				h4(name="coupons_store")#coupons_store
+				input(name="coupons_stores",id="coupons_stores",type="hidden")
+				hr
+				h4(name="coupons_contact")#coupons_contact
+				input(name="coupons_contacts",id="coupons_contacts",type="hidden")
+				hr
+				h4(name="coupons_address")#coupons_address
+				input(name="coupons_addresss",id="coupons_addresss",type="hidden")
+				hr
+				h4(name="coupons_details")#coupons_details
+				input(name="coupons_detailss",id="coupons_detailss",type="hidden")
+				hr
+				h4(name="user_number")#user_number
+				input(name="user_numbers",id="user_numbers",type="hidden")
+				hr
+				h4(name="coupons_validDate")#coupons_validDate
+				input(name="coupons_validDates",id="coupons_validDates",type="hidden")

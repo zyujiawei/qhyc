@@ -1,0 +1,28 @@
+extends content-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				include services-header.jade
+				h1.
+					详情
+			div(role="main",class="ui-content")
+				h2#title
+					img(id="showImage" src="/advert/#{locals.data.product.image.filename}",style="height:200px;width:100%;")
+				table(class="table-a-table")
+					tr
+						td(class="tab1-td") 名称
+						td(class="tab2-td")	#{locals.data.product.product}
+						//#contact
+					tr
+						td(class="tab1-td") 介绍
+						td(class="tab2-td")	#{locals.data.product.detail}
+							//a(#telephone,style="text-decoration: none")#telephone
+					tr
+						td(class="tab1-td") 价格
+						td(class="tab2-td") #{locals.data.product.price}
+					tr
+						td(class="tab1-td") 销量
+						td(class="tab2-td") #{locals.data.product.sales}
+							//a(#cellphone,style="text-decoration: none")#cellphone
+				a(href="javascript:;" onclick="location='https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{data.weixin[0].replace}&redirect_uri=http%3a%2F%2F#{data.link[0].replace}%2fmobile%2flocation%2fbuy?productId=#{locals.data.product._id}"+encodeURIComponent("&")+"productname=#{locals.data.product.product}"+encodeURIComponent("&")+"storeId=#{locals.data.store._id}&response_type=code&scope=snsapi_userinfo&state=buy#wechat_redirect'" class="ui-btn ui-btn-inline" style="background-color:#00a3e4; float:right; border:none !important; color:#fff !important; border:none;font-family:'Microsoft YaHei'; border-radius:5px;") 购买

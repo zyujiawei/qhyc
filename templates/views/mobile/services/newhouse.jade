@@ -1,0 +1,26 @@
+extends content-layout
+
+block content
+	.index2
+		.index-top-box
+			img(src="../../../../images/images/banner3.jpg" style="width:100%; height:100%;")
+			div(style="margin: 10px 5%;")
+				table.twotable
+					tr
+						th(colspan="2") 服务范围
+					tr
+						td(colspan="2") 新房打扫、租房大扫除、海外归国清洁房屋、2个月以上没有清洁。
+				table.twotable
+					tr
+						th(colspan="2") 价格标准
+					tr
+						td(colspan="2") 
+							每平方米&nbsp;
+							span(style="color:red;") 5 
+							&nbsp;元，服务范围仅限
+							span(style="color:red;") &nbsp;20平米~260平米之间
+							，不在此区间内订单将不予以受理。 
+				table.threetable
+					tr
+						td(colspan="2")
+							button(type="button",id="submit-6",onclick="location='https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{data.weixin[0].replace}&redirect_uri=http%3a%2F%2F#{data.link[0].replace}%2fmobile%2flocation%2fbuy?productId=#{locals.data.product._id}"+encodeURIComponent("&")+"productname=#{locals.data.product.product}"+encodeURIComponent("&")+"storeId=#{locals.data.store._id}&response_type=code&scope=snsapi_userinfo&state=buy#wechat_redirect'" class="ui-shadow ui-btn ui-corner-all ui-mini",style="float:right; height:100%; width:100%; font-size:1em; background-color:#00a3e4; border:none !important; color:#fff !important; border:none; font-family:'Microsoft YaHei'; border-radius:5px; margin:0 auto;") 立即预定

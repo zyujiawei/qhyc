@@ -1,0 +1,17 @@
+if data.posts.totalPages > 1
+	nav
+		ul.pagination
+			if data.posts.previous
+				li: a(href='?page=' + data.posts.previous): span(aria-hidden-"true") &laquo;
+			else
+				li.disabled: a(href='?page=' + data.posts.previous): span(aria-hidden-"true") &laquo;
+
+			each p, i in data.posts.pages
+				li(class=data.posts.currentPage == p ? 'active' : null)
+					a(href='?page=' + (p == '...' ? (i ? data.posts.totalPages : 1) : p ))= p
+
+			if data.posts.next
+				li: a(href='?page=' + data.posts.next): span(aria-hidden-"true") &raquo;
+			else
+				li.disabled: a(href='?page=' + data.posts.next): span(aria-hidden-"true") &raquo;
+

@@ -1,0 +1,31 @@
+extends mobile-layout
+
+block content
+	include userlist.jade
+	include footernav.jade
+script(type="text/javascript").
+				var socket = io.connect('http://www.szqhyc.com',{
+						'connect timeout': 500,
+						'reconnect': true,
+						'reconnection delay': 500,
+						'reopen delay': 500,
+						'max reconnection attempts': 10
+					});//设置连接超时
+				$.session.set('openid','#{locals.data.user.openid}');
+				socket.on(''+$.session.get('openid')+'statelostandfound', function (data) {
+					if($('#lostandfoundnum')){
+						$('#lostandfoundnum').text(data.statelostandfound);
+					}
+				});
+				socket.on(''+$.session.get('openid')+'statefixing', function (data) {
+					if($('#fixingnum')){
+						$('#fixingnum').text(data.statefixing);
+
+					}
+				});
+				socket.on(''+$.session.get('openid')+'statetotal', function (data) {
+					if($('#unread')){
+						$('#unread').html(data.statetotal);
+					}
+				});
+script(type='text/javascript', src='/js/mobile_remind.js')

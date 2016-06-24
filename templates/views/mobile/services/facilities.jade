@@ -1,0 +1,37 @@
+extends content-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				include services-header.jade
+				h1.
+					配套设施
+			div(role="main",class="ui-content")
+				ul(data-role="listview")
+					each post in data.posts
+						li 
+							a(href="#postcontent",onclick="loadData(this)",class="postLink",data-transition="slide",data-json=post,data-date=post._.publishedDate.format('YYYY-MM-DD'))
+								h2 #{post.title}
+								p(style="color: Grey") #{post._.publishedDate.format('YYYY-MM-DD')}
+		div(data-role="subpage")#postcontent
+			div(data-role="header")
+				include services-header.jade
+				h1#header
+			div(role="main",class="ui-content")
+				h2#title
+				h4#publishDate
+				hr
+				table
+					tr
+						td(style="width:80px;vertical-align:top;") 设施设备:
+						td#item
+					tr
+						td 开放时间:
+						td#openhr
+					tr
+						td 联系人:
+						td#author
+					tr
+						td 联系方式:
+						td
+							a(#contact,style="text-decoration: none")#contact

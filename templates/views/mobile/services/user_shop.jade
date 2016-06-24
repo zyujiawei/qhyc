@@ -1,0 +1,75 @@
+extends content-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				include services-header.jade
+				h1.
+					我的订单
+			div(role="main",class="ui-content")
+				ul(data-role="listview")
+					each post in data.posts
+						li(style="margin-bottom:10px;")
+							a(href="#postcontent",onclick="loadData(this)",data-post=post,style="height:25px !important;")
+								div(style="position: absolute;left: 5%; font-size:1.4rem;")
+									p 订单状态：#{post.orderExamine }
+								div(style="position: absolute;left: 45%; font-size:1.4rem;")
+									p 订单号: #{post.orderNumber }
+								
+		div(data-role="subpage")#postcontent
+			div(data-role="header")
+				include services-header.jade
+				h1#header
+			div(role="main",class="ui-content")
+				table.onetable
+					tr
+						td 订单号
+						td(colspan="3")#orderNumber
+					tr
+						td 下单时间
+						td(colspan="3")#orderTime
+					tr
+						td 预约时间
+						td(colspan="3")#pointTime
+					tr
+						td 支付方式
+						td(colspan="3")#orderPay
+					tr
+						td 订单状态
+						td(colspan="3")#orderExamine
+					tr
+						td 支付状态
+						td(colspan="3")#payExamine
+					tr
+						td 支付时间
+						td(colspan="3")#payTime
+					tr
+						td 商品名称
+						td(colspan="3")#product
+					tr
+						td 服务内容
+						td(colspan="3")#serviceContent
+					tr
+						td 收货人姓名
+						td(colspan="3")#user
+					tr
+						td 收货地址
+						td(colspan="3")#address
+					tr
+						td 联系电话
+						td(colspan="3")#telephone
+					tr
+						td 订单价格
+						td(colspan="3")#price
+					tr
+						td 备注
+						td(colspan="3")#note
+					tr
+						td 取消理由
+						td(colspan="3")#refuse
+					tr
+						th(colspan="4") 
+							span(style="font-size:0.8em; color:#333;") 如需取消订单，请联系
+							a(href="tel:18108535673")
+								span(style="font-size:0.8em; color:red;") 18108535673
+							span(style="font-size:0.8em; color:#333;") 为您协商解决。

@@ -1,0 +1,9 @@
+extends content-layout
+
+block content
+    div(data-role="page")#main
+        div(data-role="header")
+                h1.
+                    用户提醒
+            div(role="main",class="ui-content")
+                h3 #{locals.data.remind}

@@ -1,0 +1,54 @@
+extends content-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				div(data-role="header")
+					a(href="jump?_id=#{data._id}",class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all",data-ajax="false")
+					a(href="#",id="lost",style="height:10px;line-height:10px;margin-top:3px;background: #f9f9f9;border:1px solid #FFCC99;border-style:outset;",onclick="location='https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{data.business[0].replace}&redirect_uri=http%3A%2F%2F#{data.link[0].replace}%2fbusiness%2flocation%2fadd_product?_id=#{data._id}&response_type=code&scope=snsapi_base&state=feedback#wechat_redirect'") 新增
+				h1.
+					商品管理			
+			div(role="main",class="ui-content")
+				ul(data-role="listview")
+					each post in data.products
+						li(style="margin-bottom:10px;") 
+							a(href="#postcontent",onclick="loadData(this)",data-type='Product',data-_id='#{data._id}',data-json=post,data-date=post._.publishedDate.format('YYYY-MM-DD'),data-image=post.image.filename,class="height:100px;width:")
+								//display:none;block
+								div(style="height:90px;width:12px;background-color:#35afe0;position: absolute;left:0px;top:0px;display:none;")
+								img(src="/advert/#{post.image.filename}",style="height:60px;width:60px; position: absolute;left: 25px;top:10px; border-radius: 6px; -webkit-border-radius: 6px; -moz-border-radius: 6px;")
+								div(style="position: absolute;left: 110px; top:5px;font-size:20px;")
+									p 商品名称： #{post.product}
+								div(style="position: absolute;left: 110px; top:25px;font-size:20px;")
+									p 商品价格： #{post.price}
+
+		div(data-role="subpage")#postcontent
+			div(data-role="header")
+				include services-header.jade
+				h1#header
+			div(role="main",class="ui-content")
+				//h3#publishDate
+				img(id="showImage",style="height:200px;width:100%;")
+				hr
+				p#content
+				//CSS文件在catering-table.css
+				table(class="table-a-table",style="height:120px;")
+					tr
+						td(class="tab1-td") 商品名称:
+						td(class="tab2-td")#product
+					tr
+						td(class="tab1-td") 商品价格:
+						td(class="tab2-td")#price
+					tr
+						td(class="tab1-td") 发布日期:
+						td(class="tab2-td")#datatime
+				div(data-role="collapsibleset",data-content-theme="a",data-iconpos="right",id="set")
+					div(data-role="collapsible",id="set1",data-collapsed="true")
+						h3 商品介绍:
+						p#evalue
+				table(style="height:40px;width:100%;")
+					tr
+						td
+							a#changeproduct(class="ui-btn ui-corner-all") 修改
+						td
+							a#publicdel(class="ui-btn ui-corner-all",style="color:red;") 删除
+				

@@ -1,0 +1,37 @@
+extends content-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				//-
+					include services-header.jade
+					h1.
+						成功下单
+			div(role="main",class="ui-content")
+					table.onetable
+						tr
+							th(colspan="4") 
+								恭喜您，下单成功！
+								br
+								span(style="font-size:0.8em; color:#333;") 您可以在
+								span(style="font-size:0.8em; color:red;") '我的-订单查询'
+								span(style="font-size:0.8em; color:#333;") 中查询订单信息
+						tr
+							td 订单号
+							td(colspan="3") #{locals.data.posts.orderNumber}
+						tr
+							td 商品名称
+							td(colspan="3") #{locals.data.posts.product}
+						tr
+							td 姓名
+							td(colspan="3") #{locals.data.posts.user}
+						tr 
+							td 电话号码
+							td(colspan="3") #{locals.data.posts.telephone}
+						tr
+							td 金额
+							td(colspan="3") #{locals.data.posts.price} 元
+						tr
+							td 地址
+							td(colspan="3") #{locals.data.posts.address}
+					a(href="#",onclick="location='home'",data-rel="popup",class="ui-shadow ui-btn ui-corner-all ui-mini",id="submit-6" style="margin:10px 0 auto; background-color:#00a3e4; border:none !important; color:#fff !important; border:none;font-family:'Microsoft YaHei'; border-radius:5px;") 点击返回

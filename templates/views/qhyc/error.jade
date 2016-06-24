@@ -1,0 +1,95 @@
+doctype html
+html
+  head
+    title &#x524D;&#x6D77;&#x4E91;&#x57CE;
+    |   
+    style.
+      * {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      }
+      html {
+      height: 100%;
+      background: #faf6ec;
+      }
+      body {
+      position: relative;
+      margin: 0;
+      height: 100%;
+      min-height: 660px;
+      font-family: Verdana, "Verdana Ref", sans-serif;
+      text-align: center;
+      color: #949189;
+      }
+      .dialog {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 660px;
+      width: 660px;
+      margin-top: -330px;
+      margin-left: -330px;
+      background-image: url(planets.svg);
+      }
+      p, span, h1 {
+      display: block;
+      width: 300px;
+      margin: 0 auto;
+      }
+      .number,
+      .wrapper-top,
+      .wrapper-bottom {
+      position: absolute;
+      left: 0;
+      right: 0;
+      }
+      .wrapper-top {
+      bottom: 410px;
+      }
+      .wrapper-bottom {
+      top: 410px;
+      }
+      .warning {
+      font-size: 20px;
+      text-transform: uppercase;
+      font-weight: bold;
+      }
+      .message {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #66595c;
+      }
+      .number {
+      top: 0;
+      bottom: 0;
+      background: url(yunc.png) no-repeat center;
+      text-indent: 100%;
+      overflow: hidden;
+      }
+      .footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 180px;
+      background: url(footer.svg) no-repeat center bottom;
+      }
+    |   
+    link(rel='shortcut icon', href='/favicon.ico')
+  body
+    // This file lives in public/404.html
+    .dialog
+      .wrapper-top
+        h1.message &#x9875;&#x9762;&#x65E0;&#x6CD5;&#x627E;&#x5230;
+      |     
+      span.number 404
+      |     
+      .wrapper-bottom
+        p.suggestion &#x4E0D;&#x8981;&#x7070;&#x5FC3;&#x5450;!
+        |       
+        br
+        |       
+        p.warning &#x4E5F;&#x8BB8;&#x9875;&#x9762;&#x94FE;&#x63A5;&#x9519;&#x8BEF;&#x6216;&#x8005;&#x9875;&#x9762;&#x88AB;&#x5220;&#x9664;.
+    |   
+    footer.footer

@@ -1,0 +1,93 @@
+html
+    head
+        title= "添加商家"
+        link(rel='stylesheet', href="/styles/bootstrap.min.css")
+        link(rel='stylesheet', href="/styles/bootstrap-responsive.min.css")
+        link(rel='stylesheet', href="/styles/bootstrap-datetimepicker.min.css")
+        link(rel='stylesheet', href="/styles/catering-table.css")
+        script(src="/js/jquery-1.11.1.min.js")
+        script(src="/js/jquery.form.js")
+        script(src="/js/bootstrap-datetimepicker.js")
+        script(src="/js/bootstrap.min.js")
+        script(src="/js/bootstrap-datetimepicker.zh-CN.js",charset="UTF-8")
+        script(src="/js/mobile-helper.js")
+        script(src="/js/helper.js")
+    body(style="background-color:white;")
+    div(data-role="page" class="div")
+        img(src="/images/newMain/03.png" style="margin-left:70px;")
+        div(role="main",class="ui-content")
+            form(action="do_Add_Merchant",method="post",id="form1",enctype="multipart/form-data")
+                table(style=" background:white;")
+                        tr
+                            td(class="tab-td1") 
+                                物业名称 &nbsp 
+                            td 
+                                input#storeName(class="tab-input" name="storeName")
+                        tr
+                            td(class="tab-td1")
+                                所属物业&nbsp
+                            td
+                                select.btn.btn-default.dropdown-toggle(name="property",id="property" class="tab-btn-select" data-toggle='dropdown')
+                                    each post in data.property
+                                        option() #{post.username}
+                        tr
+                            td(class="tab-td1")
+                                类&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp别&nbsp
+                            td
+                                select.btn.btn-default.dropdown-toggle(name="storeType",id="storeType" class="tab-btn-select" data-toggle='dropdown')
+                                    each post2 in data.type
+                                        option() #{post2.title}
+                        tr
+                            td(class="tab-td1")
+                                图&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp像&nbsp
+                            td
+                                img#image(src="" style="display:none;width:380px;height:250px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);")
+                                input(accept="image/*" data-clear-btn='true' type="file"  name="images" id="images" class="tab-input" onchange="previewImage(this)")
+                        tr
+                            td(class="tab-td1")
+                                联&nbsp&nbsp&nbsp系&nbsp&nbsp人&nbsp
+                            td
+                                input#contact(class="tab-input" name="contact")
+                            td
+                                div#authordiv
+                        tr
+                            td(class="tab-td1")
+                                电&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp话&nbsp
+                            td
+                                input#telephone(class="tab-input" name="telephone")
+                            td
+                                div#contactdiv
+                        tr
+                            td(class="tab-td1")
+                                手&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp机&nbsp
+                            td
+                                input#cellphone(class="tab-input" name="cellphone")
+                            td
+                                div#phonediv
+                        tr
+                            td(class="tab-td1")
+                                联系Q&nbspQ&nbsp
+                            td
+                                input#qq(class="tab-input" name="qq")
+                            td
+                                div#qqnumberdiv
+                        tr
+                            td(class="tab-td1")
+                                商家地址&nbsp
+                            td
+                                input#address(class="tab-input" name="address")
+                            td
+                                div#addressdiv
+                        tr
+                            td(class="tab-td1")
+                                商家详情&nbsp
+                            td
+                                input#detail(class="tab-input" name="detail")
+                            td
+                                div#merchantdiv
+                        tr
+                            td(colspan='2')
+                                button(class="tab-input tab-btn")
+                                    确定
+                        
+                            

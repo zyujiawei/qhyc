@@ -1,0 +1,21 @@
+div(style='height: 60px;')
+	.footer
+		a.l(href='javascript:;' onclick="location='home'")
+			span 主页
+		a.r(href='javascript:;' onclick="location='https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{data.weixin[0].replace}&redirect_uri=http%3a%2F%2F#{data.link[0].replace}%2fmobile%2flocation%2fuserCenter&response_type=code&scope=snsapi_userinfo&state=center#wechat_redirect'")
+			span 我的
+
+script(type='text/javascript').
+	var bullets = document.getElementById('position').getElementsByTagName('li');
+	var banner = Swipe(document.getElementById('mySwipe'), {
+		auto: 2000,
+		continuous: true,
+		disableScroll:false,
+		callback: function(pos) {
+			var i = bullets.length;
+			while (i--) {
+				bullets[i].className = ' ';
+			}
+			bullets[pos].className = 'cur';
+		}
+	});

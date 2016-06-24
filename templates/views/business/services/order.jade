@@ -1,0 +1,92 @@
+extends content-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				div(data-role="header")
+					a(href="jump?_id=#{data._id}",class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all",data-ajax="false")
+					a(href="#",id="lost",style="height:10px;line-height:10px;margin-top:3px;background: #f9f9f9;border:1px solid #FFCC99;border-style:outset;",onclick="orderRefresh('#{data._id}')") 刷新
+				h1.
+					订单列表
+		div(ng-app="myApp" role="main",class="ui-content")
+			label(for="select-native-s") 订单状态
+				select(ng-model="orderExamine")
+					option(value="") 全部
+					option 未处理
+					option 处理中
+					option 已处理
+					option 已取消
+			label(for="select-native-s") 查询条件
+			input(type="text" placeholder="搜索..." ng-model="orderNumber")
+			div(role="main",class="ui-content")
+				ul(data-role="listview")
+					li(ng-repeat="post in #{data.orders} | filter:orderExamine | filter:orderNumber" style="margin-bottom:10px;")
+						a(href="#postcontent",onclick="loadData(this)",data-_id="#{data._id}",data-post="{{ post }}",style="height:95px !important;")
+							div(style="position: absolute;left: 85px; top:3px;font-size:20px;")
+								p 订单号: {{ post.orderNumber }}
+							div(style="position: absolute;left: 85px; top:23px;font-size:20px;")
+								p 订单价格: {{ post.price }}元
+							div(style="position: absolute;left: 85px; top:43px;font-size:20px;")
+								p 客户姓名：{{ post.user }} 
+							div(style="position: absolute;left: 85px; top:63px;font-size:20px;")
+								p 支付方式：{{ post.orderPay }}
+							div(style="position: absolute;left: 85px; top:83px;font-size:20px;")
+								p 订单状态：{{ post.orderExamine }}
+
+		div(data-role="subpage")#postcontent
+			div(data-role="header")
+				include services-header.jade
+				h1#header
+			div(role="main",class="ui-content")
+				table.onetable
+					tr
+						td(class="tab1-td") 订单号
+						td(class="tab2-td")#orderNumber
+					tr
+						td(class="tab1-td") 下单时间
+						td(class="tab2-td")#orderTime
+					tr
+						td(class="tab1-td") 预约时间
+						td(class="tab2-td")#pointTime
+					tr
+						td(class="tab1-td") 服务内容
+						td(class="tab2-td")#serviceContent
+					tr
+						td(class="tab1-td") 支付方式
+						td(class="tab2-td")#orderPay
+					tr
+						td(class="tab1-td") 订单状态
+						td(class="tab2-td")#orderExamine
+					tr
+						td(class="tab1-td") 支付状态
+						td(class="tab2-td")#payExamine
+					tr
+						td(class="tab1-td") 支付时间
+						td(class="tab2-td")#payTime
+					tr
+						td(class="tab1-td") 商品名称
+						td(class="tab2-td")#product
+					tr
+						td(class="tab1-td") 收货人姓名
+						td(class="tab2-td")#user
+					tr
+						td(class="tab1-td") 收货地址
+						td(class="tab2-td")#address
+					tr
+						td(class="tab1-td") 联系电话
+						td(class="tab2-td")#telephone
+					tr
+						td(class="tab1-td") 订单价格
+						td(class="tab2-td")#price
+					tr
+						td(class="tab1-td") 备注
+						td(class="tab2-td")#note
+					tr
+						td(class="tab1-td") 取消理由
+						td(class="tab2-td")#refuse
+				div#judge(style="display: inline; width: auto; height: auto;")
+					form(action="confirmOrder",method="post",id="confirmForm",enctype="multipart/form-data")
+						input(id="confirmId",name="confirmId",type="hidden")
+						input(id="number",name="number",type="hidden")
+						button(type="button",id="dispose",onclick="document.getElementById('confirmForm').submit();")  确认
+					a#friends(class="ui-btn ui-corner-all",style="color:red;")	取消

@@ -1,0 +1,25 @@
+extends mobile-layout
+
+block content
+	div(data-role="page")#around
+		div(data-role="header",id="mobileheader",data-ajax="false",style="z-index: 1;")
+			include aroundshow.jade
+		div(role="main",class="ui-content",id="mobilebody")
+			include aroundlist.jade
+		div(data-role="footer",data-position="fixed" style="line-height:0px;background-color:#F9F9F9;filter:alpha(opacity=95); -moz-opacity:0.95; opacity:0.95;",id="mobilefooter")
+			include footernav.jade
+	script(type="text/javascript").
+		var socket = io('http://www.szqhyc.com');//设置连接超时
+		if('' != '#{locals.data.openid}'){
+			$.session.set('openid','#{locals.data.openid}');
+		}
+		socket.on(''+$.session.get('openid')+'statetotal', function (data) {
+			if($('#unread')){
+				$('#unread').html(data.statetotal);
+				$('#unread').css({"display":"block"});
+				if($('#unread').html() == '0'){
+					$('#unread').html('');
+				};
+			}	
+		});
+	script(type='text/javascript', src='/js/mobile_remind.js')

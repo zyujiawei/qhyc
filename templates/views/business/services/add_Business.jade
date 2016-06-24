@@ -1,0 +1,54 @@
+extends content-layout
+
+block content
+	div(data-role="page")
+		div(data-role="header")
+			div(data-role="header")
+				a(href="home",class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all",data-rel="back",data-ajax="false")
+			h1.
+				商铺信息填写
+		div(role="main",class="ui-content")
+			form(action="business_add",method="post",id="form1",enctype="multipart/form-data")
+				label(for="text-basic") 商铺名称
+				input(name="title",id="title",type="text",placeholder="标题...")
+				div#titlediv(style="color: red")
+				label(for="select-native-s") 入驻小区
+				a#property1(name="property1" href="#popupLogin" onclick="repeatBproperty()" data-rel="popup" data-position-to="window" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-check ui-btn-icon-left ui-btn-a" data-transition="pop" style="width:270px")选择小区
+				div(data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all")
+					div(style="padding:10px 20px;width:250px")
+						select(id="bProvince" name="bProvince" onchange="bProvince(this.value)")
+							option 请选择省份
+							each post in data.provinces
+								option #{post.province}
+						select(id="bCitys" name="bCitys" onchange="bCity(this.value)")
+							option 请选择城市
+						select(id="bDistrict" name="bDistrict" onchange="bDistrict(this.value)")
+							option 请选择区
+						select(id="bProperty" name="bProperty")
+							option 请选择小区
+						button#bButton(type="button",class="ui-shadow ui-btn ui-corner-all ui-mini" onclick="businessProperty()") 确定
+				input(id="property",name="property",type="hidden")
+				label(for="select-native-s") 商铺类别
+				select(name="storetype",id="storetype")
+					each post in data.posts
+						option #{post.title}
+				label(for="textarea-6") 店铺Logo
+				img#image(src="" style="display:none;width:170px;height:200px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);")
+				input(data-clear-btn='true' type="file",accept="image/*" name="images" id="images" onchange="previewImage(this)")
+				label(for="text-basic") 联系人
+				input(name="contact",id="contact",type="text",placeholder="姓名...")
+				div#authordiv(style="color: red")
+				label(for="number-pattern") 联系号码
+				input(name="number",id="number",type="number",placeholder="手机号码...")
+				div#numberdiv(style="color: red")
+				label(for="text-basic") 商家地址
+				input(name="address",id="address",type="text",placeholder="详细地址...")
+				div#authordiv(style="color: red")
+				label(for="textarea-6") 商家详情
+				textarea(cols="40",rows="8",name="detail",id="detail",data-mini="true",placeholder="该商家很懒,未添加详情。"
+				style="height: 100px !important")
+				div#contentdiv(style="color: red")
+				input(id="_id",name="_id",type="hidden",value="#{data._id}")
+				input(name="url" id="url",type="hidden")
+				input(name="publishedDate",id="publishedDate",type="hidden")
+				button(type="button",id="submit-6",onclick="document.getElementById('form1').submit();") 确定

@@ -1,0 +1,43 @@
+extends content-layout
+
+block content
+	div(data-role="page")
+
+		div(data-role="header")
+			div(data-role="header")
+				a(href="home",class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all",data-rel="back",data-ajax="false")
+			h1.
+				失物信息填写
+		div(role="main",class="ui-content")
+			form(action="lostandfound_add",method="post",id="form1",enctype="multipart/form-data")
+				label(for="text-basic") 失物名称
+				input(name="title",id="title",type="text",placeholder="名称...")
+				div#titlediv(style="color: red")
+				label(for="select-native-s") 选择类别
+				select(name="state",id="state")
+					option 丢失
+					option 找到
+				label(for="text-basic") 联系人
+				input(name="author",id="author",type="text",placeholder="名称...")
+				div#titlediv(style="color: red")
+				div#authordiv(style="color: red")
+				label(for="number-pattern") 联系号码
+				input(name="number",pattern="[0-9]*",id="number",type="number",placeholder="联系号码...")
+				div#numberdiv(style="color: red")
+				label(for="textarea-6") 上传图片
+				img#image(src="" style="display:none;width:170px;height:200px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);")
+				input(data-clear-btn='true' type="file",accept="image/*" name="images" id="images" onchange="previewImage(this)")
+				label(for="textarea-6") 失物描述
+				textarea(cols="40",rows="8",name="content",id="content",data-mini="true",placeholder="失物描述..."
+				style="height: 100px !important")
+
+				input(name="openid",id="openid",type="hidden" value="#{data.openid}" )
+				
+				div#contentdiv(style="color: red")
+				input(name="url" id="url",type="hidden")
+				input(name="publishedDate",id="publishedDate",type="hidden")
+				a(href="#",onclick="on()",data-rel="popup",class="ui-shadow ui-btn ui-corner-all ui-mini",id="submit-6") 提交
+				div(data-role="popup",id="popupBasic",class="ui-content",style="max-width:280px",data-dismissible="false")
+						p 您的信息正在提交中。
+						button(type="submit",id="submit-6",class="ui-shadow ui-btn ui-corner-all ui-mini",data-transition="pop",onclick="document.getElementById('form1').submit();") 确定
+					

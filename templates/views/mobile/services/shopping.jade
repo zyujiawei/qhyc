@@ -1,0 +1,132 @@
+extends content-layout
+//结算页面
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				include services-header.jade
+				h1.
+					结算
+			div(role="main",class="ui-content")
+				.gwc(style=' margin:auto;')
+					table.gwc_tb1(cellpadding='0', cellspacing='0')
+						tr
+							td.tb1_td1
+								input#Checkbox1.allselect(type='checkbox')
+							td.tb1_td1 全选
+							td.tb1_td3 商品
+							td.tb1_td4 商品信息
+							td.tb1_td5 数量
+							td.tb1_td6 单价
+							td.tb1_td7 操作
+					// -商品加减算总数--
+					script(type='text/javascript').
+						$(function () {
+						var t = $("#text_box1");
+						$("#add1").click(function () {
+						t.val(parseInt(t.val()) + 1)
+						setTotal(); GetCount();
+						})
+						$("#min1").click(function () {
+						if(t.val()>0){
+						t.val(parseInt(t.val()) - 1)
+						setTotal(); GetCount();
+						}
+						})
+						function setTotal() {
+						$("#total1").html((parseInt(t.val()) * 9).toFixed(2));
+						$("#newslist-1").val(parseInt(t.val()) * 9);
+						}
+						setTotal();
+						})
+					table.gwc_tb2(cellpadding='0', cellspacing='0')
+						tr
+							td.tb2_td1
+								input#newslist-1(type='checkbox', value='1', name='newslist')
+							td.tb2_td2
+								a(href='#')
+									img(src='images/img1.jpg')
+							td.tb2_td3
+								a(href='#') 产品标题
+							td.tb1_td4 一件
+							td.tb1_td5
+								input#min1(name='', style=' width:20px; height:18px;border:1px solid #ccc;', type='button', value='-')
+								input#text_box1(name='', type='text', value='1', style=' width:30px; text-align:center; border:1px solid #ccc;')
+								input#add1(name='', style=' width:20px; height:18px;border:1px solid #ccc;', type='button', value='+')
+							td.tb1_td6
+								label#total1.tot(style='color:#ff5500;font-size:14px; font-weight:bold;')
+							td.tb1_td7
+								a(href='#') 删除
+					// -商品加减算总数--
+					script(type='text/javascript').
+						$(function () {
+						var t = $("#text_box2");
+						$("#add2").click(function () {
+						t.val(parseInt(t.val()) + 1)
+						setTotal(); GetCount();
+						})
+						$("#min2").click(function () {
+						if(t.val()>0){
+						t.val(parseInt(t.val()) - 1)
+						setTotal(); GetCount();
+						}
+						})
+						function setTotal() {
+						$("#total2").html((parseInt(t.val()) * 8).toFixed(2));
+						$("#newslist-2").val(parseInt(t.val()) * 8);
+						}
+						setTotal();
+						})
+					table.gwc_tb2(cellpadding='0', cellspacing='0')
+						tr
+							td.tb2_td1
+								input#newslist-2(type='checkbox', value='1', name='newslist')
+							td.tb2_td2
+								a(href='#')
+									img(src='public/images/img2.jpg')
+							td.tb2_td3
+								a(href='#') 产品标题
+							td.tb1_td4 一件
+							td.tb1_td5
+								input#min2(name='', style=' width:20px; height:18px;border:1px solid #ccc;', type='button', value='-')
+								input#text_box2(name='', type='text', value='1', style=' width:30px; text-align:center; border:1px solid #ccc;')
+								input#add2(name='', style=' width:20px; height:18px;border:1px solid #ccc;', type='button', value='+')
+							td.tb1_td6
+								label#total2.tot(style='color:#ff5500;font-size:14px; font-weight:bold;')
+							td.tb1_td7
+								a(href='#') 删除
+					// -总数--
+					script(type='text/javascript').
+						$(function () {
+							$(".quanxun").click(function () {
+						setTotal();
+						//alert($(lens[0]).text());
+						});
+						function setTotal() {
+						var len = $(".tot");
+						var num = 0;
+						for (var i = 0; i < len.length; i++) {
+						num = parseInt(num) + parseInt($(len[i]).text());
+						}
+						//alert(len.length);
+						$("#zong1").text(parseInt(num).toFixed(2));
+						$("#shuliang").text(len.length);
+						}
+						//setTotal();
+						})
+					table.gwc_tb3(cellpadding='0', cellspacing='0')
+						tr
+							td.tb1_td1  
+							td.tb1_td1  
+							td.tb3_td1  
+							td.tb3_td2
+								| 已选商品 
+								label#shuliang(style='color:#ff5500;font-size:14px; font-weight:bold;') 0
+								|  件
+							td.tb3_td3
+								| 合计(不含运费):
+								span ￥
+								span(style=' color:#ff5500;')
+									label#zong1(style='color:#ff5500;font-size:14px; font-weight:bold;')
+							td.tb3_td4
+								span#jz1 结算
+								a#jz2.jz2(href='#', style=' display:none;') 结算

@@ -1,0 +1,141 @@
+nav.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+  // Brand and toggle get grouped for better mobile display
+  .navbar-header
+    button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-ex1-collapse')
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    a.navbar-brand(href='/') #{user.username}
+  // Top Menu Items
+  ul.nav.navbar-right.top-nav
+    li.dropdown
+      a.dropdown-toggle(href='#', data-toggle='dropdown')
+        i.fa.fa-envelope
+        b.caret
+      ul.dropdown-menu.message-dropdown
+        li.message-preview
+          a(href='#')
+            .media
+              span.pull-left
+                img.media-object(width=50,height=50,src='/images/qhyc/logo.png', alt='')
+              .media-body
+                h5.media-heading
+                  strong 前海云城团队
+                p.small.text-muted
+                  i.fa.fa-clock-o
+                  |  2015-07-24
+                p 消息功能即将推出
+
+        li.message-footer
+          a(href='#') 查看所有消息
+    li.dropdown
+      a.dropdown-toggle
+        i.fa.fa-bell
+        |  未读 
+        span.badge#unread
+    li.dropdown
+      a.dropdown-toggle(href='#', data-toggle='dropdown')
+        //这里是用户名显示
+        i.fa.fa-user
+        |  #{user.username}
+        b.caret
+      ul.dropdown-menu
+        //- li
+        //-   a(href='#')
+        //-     i.fa.fa-fw.fa-user
+        //-     | Profile
+        //- li
+        //-   a(href='#')
+        //-     i.fa.fa-fw.fa-envelope
+        //-     | Inbox
+        //- li
+        //-   a(href='#')
+        //-     i.fa.fa-fw.fa-gear
+        //-     | Settings
+        //- li.divider
+        li
+          a(href="#newItems",data-toggle="modal",data-target="#newItem2")
+            i.fa.fa-fw.fa-envelope
+            | 修改密码
+        li
+          a(href='/keystone/signout')
+            i.fa.fa-fw.fa-power-off
+            | 退出
+  // Sidebar Menu Items - These collapse to the responsive navigation menu on small screens
+  .collapse.navbar-collapse.navbar-ex1-collapse
+    ul.nav.navbar-nav.side-nav
+      li.active
+        a(href='home')
+          i.fa.fa-fw.fa-dashboard
+          |  主页
+      li
+        a(href='javascript:;', data-toggle='collapse', data-target='#demo')
+          i.fa.fa-fw.fa-table
+          |  商家功能 
+          i.fa.fa-fw.fa-caret-down
+        ul#demo.collapse
+          li
+            a(href='store')
+              i.fa.fa-fw.fa-clock-o
+              |  门店管理
+          li
+            a(href='order')
+              i.fa.fa-fw.fa-question
+              |  订单管理
+          li
+            a(href='fixing')
+              i.fa.fa-fw.fa-wrench
+              |  优惠促销
+          li
+            a(href='category')
+              i.fa.fa-fw.fa-exclamation-triangle
+              |  类别管理
+          li
+            a(href='product')
+              i.fa.fa-fw.fa-soccer-ball-o
+              |  商品管理
+          li
+            a(href='contact')
+              i.fa.fa-fw.fa-phone
+              |  我的账号
+          li
+            a(href='contact')
+              i.fa.fa-fw.fa-phone
+              |  联系我们
+      li
+        a(href='messag')
+          i.fa.fa-fw.fa-edit
+          |  短信通知
+div(id="newItem2",class="modal fade",tabindex="-1",role="dialog",aria-labelledby="changePasswd",aria-hidden="true",data-backdrop="static")
+  div(class="modal-dialog modal-lg")
+    div.modal-content
+      div(class="modal-header")
+        button(type="button",class="close closepost",data-dismiss="modal")
+          span(aria-hidden="true") &times;
+          span.sr-only Close
+        h4.modal-title(style="font-family:微软雅黑; font-weight:600;") 修改密码
+        div#responseText(class="alert")         
+      div(class="modal-body")
+        div(style="padding-left:100px;")
+          form#dochangpassword(action="/management/doChangePassword",method="post",class="form" style="font-family:微软雅黑;")
+            div#hiddendiv(style="color: black; padding-left:150px")
+              input#id(type="text",name="_id",value="new",style="display:none")
+              br
+            div#newdiv(style="color: #363636; padding-left:150px")
+              label(for="newpassword",style="font-family:微软雅黑;font-weight:500;") 新&nbsp&nbsp密&nbsp&nbsp码&nbsp&nbsp:
+              br
+              input#newpassword(style="text-align:center;width:300px;",class="form-control",type="password",name="newpassword",maxlength="20",value="")
+              br
+            br
+            div#confirmdiv(style="color: #363636; padding-left:150px;")
+              label(for="confirmpassword",style="font-family:微软雅黑;font-weight:500;") 确认新密码:
+              br
+              input#confirmpassword(style="text-align:center;width:300px;",class="form-control",type="password",name="confirmpassword",maxlength="20",value="")
+              br
+            br
+            div(style="padding-left:250px;")
+              button#surebutton(type="button" class="btn btn-primary" onclick="chkPassword()") 确认   
+              button(class="btn btn-default closepost",data-dismiss="modal",aria-hidden="true") 取消   
+            br
+include deletemodal.jade

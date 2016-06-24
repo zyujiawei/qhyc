@@ -1,0 +1,19 @@
+html
+    head
+        title= "优惠券管理平台"
+        script(src="/js/mobile-helper.js")
+    body(style="background-color:#;")
+    div(data-role="page"   style="margin:0 auto; width:400px; height:100px; margin-top:10%")
+        img(src="/images/newMain/03.png" style="margin-left:70px;")
+        div(role="main",class="ui-content")
+            form(action="doDeleteCoupons",method="post",id="form1",enctype="multipart/form-data")
+                label(for="text-basic") 商&nbsp&nbsp&nbsp家:
+                select(id="use" name="use" style="width:173px;" )
+                    option 请选择
+                    each post in data.posts
+                        option #{post.title}
+                br
+                br
+                label(for="text-basic") 优惠券编号:
+                input(name="number",id="number",type="text",placeholder="请输入编号...")
+                button(type="button",id="submit-6",class="ui-shadow ui-btn ui-corner-all ui-mini",data-transition="pop",onclick="deleteUserCoupons()") 确定

@@ -1,0 +1,24 @@
+extends content-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				//为不返回成功下单页面，所以直接返回本地服务页面
+				div(data-role="header")
+					a(href="home",class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all",data-ajax="false")
+				h1.
+					家政服务
+			div(role="main",class="ui-content")
+				ul(data-role="listview")
+					each post in data.posts
+						li()
+							a(href="javascript:;",onclick="location='commoditylist?storeId=#{post._id}'",data-storeId=post.id,data-json=post,data-date=post._.publishedDate.format('YYYY-MM-DD'),data-image=post.image.filename,class="height:100px;width:")
+								//display:none;block
+								div(style="height:90px;width:12px;background-color:#35afe0;position: absolute;left:0px;top:0px;display:none;")
+								img(src="/advert/#{post.image.filename}",style="height:60px;width:60px; position: absolute;left: 25px;top:10px; border-radius: 6px; -webkit-border-radius: 6px; -moz-border-radius: 6px;")
+								div(style="position: absolute;left: 110px; top:1px;font-size:23px;")
+									p #{post.title}
+								div(style="position: absolute;left: 110px; top:28px; font-size:15px; color: #666666; font-size:17px;")
+									p 电话：#{post.telephone}
+								div(style="position: absolute;left: 110px; top:45px;color: #666666;font-size:17px;")
+									p 地址：#{post.address}

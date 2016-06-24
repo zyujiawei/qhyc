@@ -1,0 +1,54 @@
+.personal_center
+	header
+		.bg-img
+			img(src='../../../images/images/center-header-bg.jpg')
+		.head-txt
+			p.left
+				img(src='#{locals.data.user.headImgurl')
+				//#{locals.data.user.headImgurl}
+			p.right
+				span.wx-name 微信昵称：
+				//p#{locals.data.user.nickName}
+				br
+				span.address 所在小区：
+				//p#{locals.data.user.property}
+	.module1
+		//-
+			a(href='myCommunity.html')
+				p.left.bg-1 我的小区
+				p.right
+				.date 花瓣里二期三栋1506
+
+
+			a(href='myPhone.html')
+				p.left.bg-2 验证手机
+				p.right
+				.date 13000080090
+		a(href='#' onclick="location='user_fixing?openid=#{locals.data.user.openid}'")
+			p.left.bg-3 我的故障报修
+			p.right
+		a(href='javascript:;' onclick="location='user_feedback?openid=#{locals.data.user.openid}'")
+			p.left.bg-4 我的意见反馈
+			p.right
+		a(href='javascript:;' onclick="location='user_lostandfound?openid=#{locals.data.user.openid}'")
+			p.left.bg-5 我的失物招领
+			p.right
+		a(href='javascript:;' onclick="location='user_complaints?openid=#{locals.data.user.openid}'")
+			p.left.bg-6 我的投诉建议
+			p.right
+	.module1
+		a(href='javascript:;' onclick="location='user_coupons?openid=#{locals.data.user.openid}'")
+			p.left.bg-7 优惠折扣
+			p.right
+		a(href='javascript:;' onclick="location='user_authentication?openid=#{locals.data.user.openid}'")
+			p.left.bg-8 个人认证
+			p.right
+		a(href='javascript:;' onclick="location='changeProperty?openid=#{locals.data.user.openid}'")
+			p.left.bg-9 地址更换
+			p.right
+		a(href='javascript:;' onclick="location='user_message?openid=#{locals.data.user.openid}'")
+			p.left.bg-10 消息中心
+			p.right
+		a(href='javascript:;' onclick="location='user_shop?openid=#{locals.data.user.openid}'")
+			p.left.bg-11 我的订单
+			p.right

@@ -1,0 +1,26 @@
+extends content-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				div(data-role="header")
+					a(href="jump?_id=#{data._id}",class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all",data-ajax="false")
+					a(href="#",id="lost",style="height:10px;line-height:10px;margin-top:3px;background: #f9f9f9;border:1px solid #FFCC99;border-style:outset;",onclick="location='https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{data.business[0].replace}&redirect_uri=http%3A%2F%2F#{data.link[0].replace}%2fbusiness%2flocation%2fadd_Common?_id=#{data._id}&attr=category&response_type=code&scope=snsapi_base&state=feedback#wechat_redirect'") 新增
+				h1.
+					类别管理	
+			div(role="main",class="ui-content")
+				ul(data-role="listview")
+					each post in data.categorys
+						li(style="margin-bottom:10px;")  
+							a(href="#postcontent",onclick="loadData(this)",data-type='Category',data-_id='#{data._id}',data-json=post,data-date=post._.publishedDate.format('YYYY-MM-DD'),style="height:25px !important;")
+								//display:none;block
+								div(style="height:90px;width:12px;background-color:#35afe0;position: absolute;left:0px;top:0px;display:none;")
+								div(style="position: absolute;left: 100px; top:5px;font-size:20px;")
+									p 类别名称： #{post.category}
+		div(data-role="subpage")#postcontent
+			div(data-role="header")
+				include services-header.jade
+				h1#header
+			div(role="main",class="ui-content")
+				a#changecategory(class="ui-btn ui-corner-all") 修改
+				a#publicdel(class="ui-btn ui-corner-all",style="color:red;") 删除

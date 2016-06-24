@@ -1,0 +1,21 @@
+extends mobile-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header",id="mobileheader",style="border-bottom:solid 15px #edeff3; z-index: 2;")
+			include slideshow.jade
+		div(role="main",class="ui-content",id="mobilebody")
+			include serviceslist.jade
+		//div(data-role="footer",data-position="fixed",id="mobilefooter",data-tap-toggle="false",style="filter:alpha(opacity=95); -moz-opacity:0.95; opacity:0.95;")
+			//include footernav.jade
+		.fakeloader#load
+	script(type="text/javascript").
+		var socket = io('http://www.szqhyc.com');
+		var remind = $("#weichuli").text();
+		if( remind == "0"){
+			$("#weichuli").css("display","none");
+		}
+		socket.on('#{data.posts._id}remindOrder', function (data) {
+			$('#weichuli').text(data.remindOrder);
+			$("#weichuli").css("display","");
+		});

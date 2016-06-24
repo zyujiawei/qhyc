@@ -1,0 +1,165 @@
+.table-a-table{
+	height:200px;
+	width:90%;
+	border-right:solid 0px #00a3e4;
+	border-bottom:solid 0px #00a3e4;
+	margin:0 auto;
+	text-align: center;
+	color: #000000;
+}
+.tab1-td{
+	width:30%;
+	font-weight:bold;
+	border-left:solid 0px #00a3e4;
+	border-top:solid 0px #00a3e4;
+	text-align: center;
+	color: #000000;
+}
+.tab2-td{
+	border-left:solid 0px #00a3e4;
+	border-top:solid 0px #00a3e4;
+	text-align: center;
+	color: #000000;
+}
+
+.div{
+	margin:0 auto; 
+	width:400px;
+	margin-top:5%;
+}
+.tab-td1{
+	color:Grey;
+	height:60px;
+}
+.tab-input{
+	height:30px;
+	width:100%;
+	border:solid 1px #00a3e4;
+	border-radius:5px;
+}
+.tab-btn{
+	text-align:center;
+	color:White;
+	background:#00a3e4;
+}
+.tab-btn-select{
+	border:solid 1px #00a3e4;
+	background:white; 
+	color:black;width:100%;
+}
+
+/************
+* 商品价格表格样式
+* 2015-12-3
+* lee
+************/
+table.gridtable {
+	margin-top: 10px;
+	width: 100%;
+	font-family: "Microsoft YaHei";
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #f9f9f9;
+	border-collapse: collapse;
+	text-align: center;
+}
+table.gridtable th {
+	width: 50%;
+	border-width: 1px;
+	color: #24292c;
+	padding: 8px;
+	border-style: solid;
+	border-color: #f9f9f9;
+	background-color: #f9f9f9;
+}
+table.gridtable td {
+	width: 50%;
+	border-width: 1px;
+	color: #4f5660;
+	padding: 8px;
+	border-style: solid;
+	border-color: #f9f9f9;
+	background-color: #ffffff;
+}
+/*-----------------------------------------*/
+table.twotable {
+	margin-top: 10px;
+	width: 100%;
+	font-family: "Microsoft YaHei";
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #f9f9f9;
+	border-collapse: collapse;
+}
+table.twotable th {
+	width: 50%;
+	border-width: 1px;
+	color: #24292c;
+	padding: 8px;
+	border-style: solid;
+	border-color: #f9f9f9;
+	background-color: #f9f9f9;
+	text-align: left;
+}
+table.twotable td {
+	width: 50%;
+	border-width: 1px;
+	color: #4f5660;
+	padding: 8px;
+	border-style: solid;
+	border-color: #f9f9f9;
+	background-color: #ffffff;
+}
+
+/*-----------------------------------------*/
+table.threetable {
+	margin-top: 10px;
+	width: 100%;
+	font-family: "Microsoft YaHei";
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #f9f9f9;
+	border-collapse: collapse;
+
+}
+
+table.threetable td {
+	width: 100%;
+	color: #4f5660;
+	padding: 8px;
+	
+}
+/*--------------------下单成功---------------------*/
+table.onetable {
+	margin-top: 10px;
+	width: 100%;
+	font-family: "Microsoft YaHei";
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #f9f9f9;
+	border-collapse: collapse;
+	text-align: center;
+}
+table.onetable th {
+	font-size: 1.6em;
+	width: 50%;
+	border-width: 1px;
+	color: red;/*#24292c*/
+	padding: 8px;
+	border-style: solid;
+	border-color: #f9f9f9;
+	background-color: #f9f9f9;
+}
+table.onetable td {
+	width: 25%;
+	border-width: 1px;
+	color: #4f5660;
+	padding: 8px;
+	border-style: solid;
+	border-color: #f9f9f9;
+	background-color: #ffffff;
+}

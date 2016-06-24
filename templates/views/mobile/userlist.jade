@@ -1,0 +1,60 @@
+.personal_center
+	header
+		.bg-img
+			img(src='../../../images/images/center-header-bg.jpg')
+		.head-txt
+			p.left
+				img(src='#{locals.data.user.headImgurl}')
+				//#{locals.data.user.headImgurl}
+			p.right
+				span.wx-name 微信昵称：#{locals.data.user.nickName}
+				br
+				span.address 所在小区：#{locals.data.user.property}
+	.module1
+		//-
+			a(href='myCommunity.html')
+				p.left.bg-1 我的小区
+				p.right
+				.date 花瓣里二期三栋1506
+
+
+			a(href='myPhone.html')
+				p.left.bg-2 验证手机
+				p.right
+				.date 13000080090
+		a(href='javascript:;' onclick="location='changeProperty?openid=#{locals.data.user.openid}'")
+			p.left.bg-1 地址更换
+			p.right
+		a(href='javascript:;' onclick="location='user_authentication?openid=#{locals.data.user.openid}'")
+			p.left.bg-2 验证手机
+			p.right
+			.date #{locals.data.user.phone}
+		a(href='javascript:;' onclick="location='user_shop?openid=#{locals.data.user.openid}'")
+			p.left.bg-3 订单查询
+			p.right
+		//-
+			a(href='javascript:;' onclick="location=''")
+				p.left.bg-4 余额查询
+				p.right
+		a(href='javascript:;' onclick="location='user_coupons?openid=#{locals.data.user.openid}'")
+			p.left.bg-5 优惠券
+			p.right
+	.module1
+		a(href='javascript:;' onclick="location='https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{data.weixin[0].replace}&redirect_uri=http%3A%2F%2F#{data.link[0].replace}%2fmobile%2f#{data.property}%2ffeedback&response_type=code&scope=snsapi_base&state=feedback#wechat_redirect'")
+			p.left.bg-6 意见反馈
+			p.right
+		//-
+			a(href='javascript:;' onclick="location=''")
+				p.left.bg-7 关于我们
+				p.right
+			a(href='javascript:;' onclick="location=''")
+				p.left.bg-8 使用帮助
+				p.right
+		a(href="tel:18108535673")
+			p.left.bg-9 联系客服
+			p.right 
+			.date 18108535673
+	//-
+		a(href='javascript:;' onclick="location=''")
+			p.left.bg-10 我的订单
+			p.right

@@ -1,0 +1,74 @@
+#main{
+    overflow:hidden;
+}
+
+#mobilebody{
+	position: relative;
+	padding:20px 3px 3px 3px;
+    overflow:hidden;
+}
+
+.main-body{
+	height: 100%;
+	widows: 100%;
+}
+
+
+.mobile-main-div{
+	position: relative;
+	height:50%;
+	width:33.3%;
+	float:left;
+	background-color: #ffffff;
+}
+.mobile-main-div-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#mobilefooter{
+    line-height:0px;
+    background-color:#F9F9F9;
+    border-style: solid none none none;
+    border-width: 1px;
+    border-color: #e7e5e5;
+}
+
+/**
+    商户端首页
+    顶部框CSS样式
+*/
+/*顶部框样式*/
+.slider-div{
+    position: fixed;
+    z-index:1;
+    background:#fff;
+    background-image: url(/images/banner.png);
+    background-repeat: no-repeat;background-size: cover;
+    -moz-background-size: cover;
+}
+/*填写验证码和背景图片位置*/
+.slider-div-div{
+    position:absolute;
+    top:25%;
+    left:25%;
+    text-align:center;
+    display:block;
+}
+/*div内input框样式*/
+.slider-div-div-input{
+    border:none !important;
+    border-bottom:1 solid black;
+    background:url(0) no-repeat;
+    background: transparent !important;
+}
+/*div内button框样式*/
+.slider-div-div-button{
+    color:#fff !important;
+    border:none !important;
+    /*outline:none !important;*/
+    font-size:10px;
+    background:#00a3e4 !important;
+    border:none;font-family:'Microsoft YaHei';
+}

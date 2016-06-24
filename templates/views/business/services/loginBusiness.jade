@@ -1,0 +1,47 @@
+doctype html
+html.no-js(lang='en')
+  head
+    meta(charset='utf-8')
+    |         
+    title 云城business登录
+    |         
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    |         
+    meta(name='description', content='')
+    |         
+    meta(name='author', content='')
+    // CSS
+    link(rel='stylesheet', href='/assets/css/reset.css')
+    |         
+    link(rel='stylesheet', href='/assets/css/supersized.css')
+    |         
+    link(rel='stylesheet', href='/assets/css/style.css')
+  |     
+  body
+    .page-container
+      h1 Business 登录
+      |             
+      form(action='loginBusiness', method='post')
+        input.email#email(type='text', name='username', placeholder='邮箱')
+        br            
+        input.password#password(type='password', name='password', placeholder='密码')       
+        br 
+        input.access_token#access_token(type='hidden',name="access_token" value="#{data.access_token}") 
+        input.openid#openid(type='hidden',name="openid" value="#{data.openid}")  
+        br 
+        button(type='button' onclick="chkBusiness()") 登录
+        br 
+        br   
+        //a(href="Businesslogin",class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all",data-ajax="false") 忘记密码                      
+    // Javascript
+    script(src='/assets/js/jquery-1.8.2.min.js')         
+    script(src='/assets/js/supersized.3.2.7.min.js')        
+    script(src='/assets/js/supersized-init.js')         
+    script(src='/assets/js/scripts.js')
+    script(src="/js/mobile-helper.js")
+    script(src="/js/helper.js")
+    script(src="/js/jquery.mobile-1.4.5.min.js")
+    script(src="/js/idangerous.swiper.min.js")
+    script(src="/js/formverification.js")
+    script(src="/js/jquery.mobile.subpage.js")
+    script(src="/js/vCode.js")

@@ -1,0 +1,19 @@
+extends content-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				include services-header.jade
+				h1.
+					联系物业
+			div(role="main",class="ui-content")
+				ul(data-role="listview")
+					each post in data.posts
+						li
+							div(data-role="collapsibleset",data-content-theme="a",data-iconpos="right",id="set")
+								div(data-role="collapsible",id="set1",data-collapsed="true")
+									h3 #{post.department}
+									h4 联系人: #{post.contactpp}
+									h4 联系方式:
+										a(href="tel:#{post.contact}",style="text-decoration:none;") #{post.contact}
+									h4 联系地址: #{post.address}

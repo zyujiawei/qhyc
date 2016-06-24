@@ -1,0 +1,57 @@
+extends content-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				include services-header.jade
+				//h1.购买商品
+					
+			div(role="main",class="ui-content")
+				ul(data-role="listview")
+					each post in data.posts
+						li
+							image()
+							
+		div(data-role="subpage")#postcontent
+			div(data-role="header")
+				include services-header.jade
+				h1#header
+			div(role="main",class="ui-content")
+				h2#title
+				img(id="showImage",style="height:200px;width:100%;")
+
+				hr
+				//CSS文件在catering-table.css
+				table(class="table-a-table")
+					tr
+						td 联系人
+						td#contact
+					tr
+						td 联系电话
+						td
+							a(#telephone,style="text-decoration: none")#telephone
+					tr
+						td 配送方式
+						td
+							select(name="state",id="state")
+								option 自取点自取
+								option 送货上门
+					tr
+						td 配送日期
+						td
+							select(name="state",id="state")
+								option 4月9日
+								option 4月10日
+								option 4月11日
+					tr
+						td 数量
+						td
+				a(href="#" class="ui-btn ui-corner-all",style="text-align:;background:#F00; color:#FFF") 立即购买
+				//a(href="#" class="ui-btn ui-corner-all",style="text-align:left") 商家评价
+
+				//div(data-role="collapsibleset",data-content-theme="a",data-iconpos="right",id="set")
+					//div(data-role="collapsible",id="set1",data-collapsed="true")
+					//	h3 商家详情:
+					//	p#detail
+		div(data-role="footer",data-position="fixed")
+			include footernav.jade

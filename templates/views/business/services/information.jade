@@ -1,0 +1,62 @@
+extends content-layout
+
+mixin post(post)
+	.post
+		tr(class="tablerow",data-json=post,data-toggle="modal" data-target="#newItem",onclick="loadData(this)")
+			td(class="postfull",style="display:none")
+			td #{post._id} 
+			td #{post.name} 
+			td #{post.email} 
+			td #{post.nickName} 
+			td #{post.sex} 
+			td #{post.country} 
+			td #{post.procince} 
+
+block content
+	div(class="container-fluid")
+		div(id="newItem",class="modal fade",tabindex="-1",role="dialog",aria-labelledby="Bulletin",aria-hidden="true",data-backdrop="static")
+			div(class="modal-dialog modal-lg")
+				div.modal-content
+					div(data-role="page")
+						div(data-role="header")
+							div(data-role="header")
+								a(href="jump?_id=#{data.posts._id}",class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all",data-rel="back",data-ajax="false")
+								h1.
+									个人信息				
+								a(href="update_info?_id=#{data.posts._id}",class="enableEdit btn btn-primary",aria-hidden="true") 修改
+						div(class="modal-body")
+							div
+								.personal_center
+									.module1
+										a(href='#')
+											p.left.bg-1 真实姓名
+											|  
+											p.right
+											.date #{data.posts.name}
+										a(href='#')
+											p.left.bg-1 邮箱地址
+											|  
+											p.right
+											.date #{data.posts.email}
+										a(href='#')
+											p.left.bg-1 用户昵称
+											|  
+											p.right
+											.date #{data.posts.nickName}
+										a(href='#')
+											p.left.bg-1 用户性别
+											|  
+											p.right
+											.date #{data.posts.sex}
+										a(href='#')
+											p.left.bg-1 所属地区
+											|  
+											p.right
+											.date #{data.posts.country} #{data.posts.procince} #{data.posts.city}
+										a(href='#')
+											p.left.bg-1 手机号码
+											|  
+											p.right
+											.date #{data.posts.phone}		      							      
+
+

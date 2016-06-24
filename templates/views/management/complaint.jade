@@ -1,0 +1,112 @@
+extends layout
+
+mixin post(post)
+	.post
+		tr(class="tablerow",data-json=post,data-toggle="modal" data-target="#newItem",data-image=post.image.filename,onclick="loadData(this)")
+			td(class="postfull",style="display:none")
+			td [#{post.state}] #{post.title}
+			td #{post.state}
+			td #{post.author}
+			td #{post.contact}
+			td #{post._.publishedDate.format('YYYY-MM-DD')}
+			td: button(type="button",class="close deletepost",data-toggle="modal",data-target="#deleteModal",data-id=post._id,data-type="Complaint")
+							span(class="glyphicon glyphicon-trash",aria-hidden="true",style="color:#000")
+							span.sr-only Close
+			//需要更改删除请求中的类型 e.g.Fixing
+block content
+	div(class="container-fluid")
+		.row
+			.col-lg-12
+				h1.page-header
+					| 投诉建议 
+				ol.breadcrumb
+					li
+						i.fa.fa-dashboard
+						a(href='home') 概览
+					li.active
+						i.fa.fa-edit
+						|  小区功能
+					li.active
+						i.fa.fa-edit
+						|  投诉建议
+		div(class="row")
+			div(class="col-lg-12")
+				.panel.panel-default
+					.panel-heading
+						h3.panel-title
+							| 投诉建议
+					.panel-body
+						.tabel-responsive					
+							table.table.table-bordered.table-hover.table-striped
+								thead
+									tr
+										th(style="width:20%") 标题
+										th(style="width:20%") 类别
+										th(style="width:20%") 联系人
+										th(style="width:20%") 联系方式
+										th(style="width:20%") 日期
+										th  
+								tbody
+									each post in data.posts.results
+										+post(post)
+						//分页代码
+						.text-right
+							include pagination.jade
+
+		div(id="newItem",class="modal fade",tabindex="-1",role="dialog",aria-labelledby="Bulletin",aria-hidden="true",data-backdrop="static")
+			div(class="modal-dialog modal-lg")
+				div.modal-content
+					div(class="modal-header")
+						button(type="button",class="close closepost",data-dismiss="modal")
+							span(aria-hidden="true") &times;
+							span.sr-only Close
+						h4.modal-title 
+						div#responseText(class="alert")
+					div(class="modal-body")
+						//span(class="glyphicon glyphicon-pencil enableEdit",aria-hidden="true")
+						form#newpost(action="/management/savepost",method="post",class="form",enctype="multipart/form-data")
+							doctype html
+							fieldset(class="fieldset",disabled)
+								.form-group
+									input#posttype(type="text",name="posttype",value="Complaint",style="display:none")
+									input#newormodify(type="text",name="newormodify",value="new",style="display:none")
+									input#id(type="text",name="id",value="new",style="display:none")
+									input(type="text",id="checkImage",name="checkImage",value="check",style="display:none")
+								.form-group
+									label(for="title") 标题
+									input(type="text",name="title",id="title",class="form-control",placeholder="请输入标题")
+								.form-group
+									label(for="state") 类别
+									select(class="form-control",name="state")
+										option 投诉
+										option 建议
+								.form-group
+									label(for="author") 联系人
+									input(type="text",name="author",placeholder="请输入作者",id="author",class="form-control")
+								.form-group
+									label(for="image") 图片
+									br
+									img(id="image",name="image",style="height:300px;width:400px;")
+									//给图片加框代码,class="form-control"
+									br
+									label(for="images") 更换图片：
+									input(type="file",id="images",accept="image/*",name="images",onchange="previewImage(this)")
+								.form-group
+									label(for="contact") 联系方式
+									input(type="text",name="contact",placeholder="请输入联系方式",id="contact",class="form-control")
+								.form-group
+									label(for="publishedDate") 日期
+									div(class="input-append date form_datetime",id="datetimepicker")
+										input(size="16",type="text",value="" readonly,name="publishedDate",id="publishedDate",class="form-control",data-date-format="yyyy/mm/dd/")
+										span(class="add-on")
+											i(class="icon-th")
+								.form-group
+									label(for="content") 内容
+									textarea(rows="5",name="content",id="_content",class="form-control")
+					div(class="modal-footer form-actions")
+									button#savebutton(class="btn btn-primary") 保存
+									button(class="btn btn-default closepost",data-dismiss="modal",aria-hidden="true") 关闭
+		
+	include deletemodal.jade
+						
+

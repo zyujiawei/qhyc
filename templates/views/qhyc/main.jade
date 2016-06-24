@@ -1,0 +1,203 @@
+extends import
+block content
+	#home.carousel
+		.carousel-inner
+			.navbar-wrapper.stuckMenu(style='position: relative; top: 0px;margin-bottom:0px;margin-top:0px')
+				.container(style="padding-left:0px;padding-right:0px;width:100%;")
+					.navwrapper(style="margin-bottom:0px;" )
+						.navbar.navbar-inverse.navbar-static-top(style="margin-bottom:5px")
+							.container
+								.navbar-header
+									button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+										span.icon-bar
+										span.icon-bar
+										span.icon-bar
+									a.navbar-brand(href='#' onclick="location='#'" style="padding:5px;background-color:")
+										img(src='/images/qhyc/logo2.png' width="150px;" height="50px;" style="margin-top:-7px;margin-left:7px;")
+								.navbar-collapse.collapse
+									ul.nav.navbar-nav
+										li.menuItem
+											a(href='#' onclick="location='#home'") 首页
+										li.menuItem
+											a(href='#Property' onclick="location='#Property'") 物业服务
+										li.menuItem
+											a(href='#Around' onclick="location='#Around'") 生活周边
+										li.menuItem
+											a(href='#admin' onclick="location='#admin'") 物业管理
+										li.menuItem
+											a(href='#question' onclick="location='#question'") 常见问题
+										li.menuItem
+											a(href='#updates' onclick="location='#updates'") 更新记录
+										li.menuItem
+											a(href='#contact' onclick="location='#contact'") 联系我们
+										li.menuItem
+											a(href='#',style="margin-left:200px;" onclick="location='/management/home'")
+												b(style="color:#fff") 登录
+
+			div(style="margin-bottom:0px; margin-top:30px;",class="container")
+			#Big_Slide_box(style="margin-bottom:40px;")
+				#Big_Slide
+					ul
+						li#Big_Slide_0()
+							img(src='/images/qhyc/li_1.jpg')
+
+						li#Big_Slide_1()
+							img(src='/images/qhyc/test.jpg')
+
+						li#Big_Slide_2()
+							img(src='/images/qhyc/li_2.jpg')
+
+						li#Big_Slide_3()
+							img(src='/images/qhyc/banner02.jpg')
+
+					a#Big_Slide_Last
+					a#Big_Slide_Next
+					#Big_Slide_Tab
+					#prevL.prev
+					#prevR.prev
+		#prevR.prev
+	
+	#contents(style='margin-top: 1px;')
+		div(style="height:1px;")
+		#Property.row.featurette
+			.col-md-7(style="width:33%;margin-top:-50px;")
+				h2.featurette-heading(style="width:40%;font-family:微软雅黑")
+					| 物业服务
+					span.text-muted 
+						br
+						img(id="property" src='/images/qhyc/property.png',width="395px;"  height="547px;" style="margin-top:20px;")
+			h2.featurette-heading
+				span.text-muted
+					br
+					br
+					br
+					br
+					p.lead(style="font-family:微软雅黑")
+						a(href="#" onclick="javascript:document.getElementById('property').src='/images/qhyc/gonggao.png';document.getElementById('propertyDetails').innerHTML='发布自己小区的公告通知，有助于业主及时了解物业的最新动态和通知。'" onmouseout="javascript:document.getElementById('property').src='/images/qhyc/property.png';document.getElementById('propertyDetails').innerHTML='为物业打造专属功能，可以轻松发布小区公告、设备设施等。业主还可在微信端进行自助报修、意见反馈。充分降低物业管理成本，从而提高物业服务水平，轻松实现微信物业，帮助物业企业全面进入“互联网”时代。';") 通知公告
+						br
+						a(href="#" onclick="javascript:document.getElementById('property').src='/images/qhyc/lostandfound.png';document.getElementById('propertyDetails').innerHTML='快捷、及时、准确和低成本将会大大提高失物的返还率。业主也可及时的发布自己遗失物品的信息。'" onmouseout="javascript:document.getElementById('property').src='/images/qhyc/property.png';document.getElementById('propertyDetails').innerHTML='为物业打造专属功能，可以轻松发布小区公告、设备设施等。业主还可在微信端进行自助报修、意见反馈。充分降低物业管理成本，从而提高物业服务水平，轻松实现微信物业，帮助物业企业全面进入“互联网”时代。';") 失物招领
+						br
+						a(href="#" onclick="javascript:document.getElementById('property').src='/images/qhyc/fixing.png';document.getElementById('propertyDetails').innerHTML='业主可通过平台自助报修，更快速的让小区物业了解故障情况，让报修处理变得更加快速简便。'" onmouseout="javascript:document.getElementById('property').src='/images/qhyc/property.png';document.getElementById('propertyDetails').innerHTML='为物业打造专属功能，可以轻松发布小区公告、设备设施等。业主还可在微信端进行自助报修、意见反馈。充分降低物业管理成本，从而提高物业服务水平，轻松实现微信物业，帮助物业企业全面进入“互联网”时代。';") 故障报修
+						br
+						a(href="#" onclick="javascript:document.getElementById('property').src='/images/qhyc/facilities.png';document.getElementById('propertyDetails').innerHTML='业主可通过平台了解小区设施详细情况，物业也可及时的发布或修改新的配套设施信息。'" onmouseout="javascript:document.getElementById('property').src='/images/qhyc/property.png';document.getElementById('propertyDetails').innerHTML='为物业打造专属功能，可以轻松发布小区公告、设备设施等。业主还可在微信端进行自助报修、意见反馈。充分降低物业管理成本，从而提高物业服务水平，轻松实现微信物业，帮助物业企业全面进入“互联网”时代。';") 配套设施
+						br
+						a(href="#" onclick="javascript:document.getElementById('property').src='/images/qhyc/contact.png';document.getElementById('propertyDetails').innerHTML='更多更全更详细的物业联系方式，业主联系物业从此不再困难。'" onmouseout="javascript:document.getElementById('property').src='/images/qhyc/property.png';document.getElementById('propertyDetails').innerHTML='为物业打造专属功能，可以轻松发布小区公告、设备设施等。业主还可在微信端进行自助报修、意见反馈。充分降低物业管理成本，从而提高物业服务水平，轻松实现微信物业，帮助物业企业全面进入“互联网”时代。';") 联系物业
+						br
+						a(href="#" onclick="javascript:document.getElementById('property').src='/images/qhyc/complaint.png';document.getElementById('propertyDetails').innerHTML='业主可通过平台向物业发送投诉建议，将业主的意见及时的传达给小区物业。'" onmouseout="javascript:document.getElementById('property').src='/images/qhyc/property.png';document.getElementById('propertyDetails').innerHTML='为物业打造专属功能，可以轻松发布小区公告、设备设施等。业主还可在微信端进行自助报修、意见反馈。充分降低物业管理成本，从而提高物业服务水平，轻松实现微信物业，帮助物业企业全面进入“互联网”时代。';") 投诉建议
+						br
+						a(href="#") 更多功能完善中...
+			.col-md-7(style="width:33%;margin-left:400px;margin-top:-300px;")
+					div#propertyDetails(style="color:red;font-size:20px;") 业主可以在微信端查看最新通知公告，进行故障报修的申请，提交投诉建议以及发布失物招领。信息化物业服务全新体验，为生活带来便利。  
+						
+			
+			
+		#Around.row.featurette(style="color:#ffffff;")
+			.col-md-7(style="width:33%;margin-top:-50px;")
+				h2.featurette-heading(style="width:40%;font-family:微软雅黑")
+					| 生活周边
+					span.text-muted 
+						br
+						img(id="around" src='/images/qhyc/around.png',width="395px;"  height="547px;" style="margin-top:20px;")
+				
+			.col-md-5
+				h2.featurette-heading
+					span.text-muted
+						br
+						br
+						br
+						br
+						p.lead(style="font-family:微软雅黑")
+							a(href="#" style="color:#ffffff;" onclick="javascript:document.getElementById('around').src='/images/qhyc/catering.png';document.getElementById('aroundDetails').innerHTML='周边小吃，美食，外卖...一网打尽，轻松了解小区周边美食情况，为业主带来更便捷的服务。';" onmouseout="javascript:document.getElementById('around').src='/images/qhyc/around.png';document.getElementById('aroundDetails').innerHTML='主要为小区业主提供小区商家服务，小区商家可方便快速的展示自己的店铺和各类促销信息，即方便业主生活，也给物业带来新的盈利模式。';") 餐饮美食
+							br
+							a(href="#" style="color:#ffffff;" onclick="javascript:document.getElementById('around').src='/images/qhyc/house.png';document.getElementById('aroundDetails').innerHTML='租房，找房，出租...不再舟车劳顿，平台轻松为您解决，为业主带来便捷的服务。';" onmouseout="javascript:document.getElementById('around').src='/images/qhyc/around.png';document.getElementById('aroundDetails').innerHTML='主要为小区业主提供小区商家服务，小区商家可方便快速的展示自己的店铺和各类促销信息，即方便业主生活，也给物业带来新的盈利模式。';") 房屋租售
+							br
+							a(href="#" style="color:#ffffff;" onclick="javascript:document.getElementById('around').src='/images/qhyc/entertainment.png';document.getElementById('aroundDetails').innerHTML='聚会，K歌，娱乐...';" onmouseout="javascript:document.getElementById('around').src='/images/qhyc/around.png';document.getElementById('aroundDetails').innerHTML='主要为小区业主提供小区商家服务，小区商家可方便快速的展示自己的店铺和各类促销信息，即方便业主生活，也给物业带来新的盈利模式。';") 休闲娱乐
+							br
+							a(href="#" style="color:#ffffff;" onclick="javascript:document.getElementById('around').src='/images/qhyc/economics.png';document.getElementById('aroundDetails').innerHTML='未添加';" onmouseout="javascript:document.getElementById('around').src='/images/qhyc/around.png';document.getElementById('aroundDetails').innerHTML='主要为小区业主提供小区商家服务，小区商家可方便快速的展示自己的店铺和各类促销信息，即方便业主生活，也给物业带来新的盈利模式。';") 家政服务
+							br
+							a(href="#" style="color:#ffffff;" onclick="javascript:document.getElementById('around').src='/images/qhyc/healthy.png';document.getElementById('aroundDetails').innerHTML='未添加';" onmouseout="javascript:document.getElementById('around').src='/images/qhyc/around.png';document.getElementById('aroundDetails').innerHTML='主要为小区业主提供小区商家服务，小区商家可方便快速的展示自己的店铺和各类促销信息，即方便业主生活，也给物业带来新的盈利模式。';") 医疗健康
+							br
+							a(href="#" style="color:#ffffff;" onclick="javascript:document.getElementById('around').src='/images/qhyc/public.png';document.getElementById('aroundDetails').innerHTML='未添加';" onmouseout="javascript:document.getElementById('around').src='/images/qhyc/around.png';document.getElementById('aroundDetails').innerHTML='主要为小区业主提供小区商家服务，小区商家可方便快速的展示自己的店铺和各类促销信息，即方便业主生活，也给物业带来新的盈利模式。';") 公共交通
+							br
+							a( href="#" style="color:#ffffff;" ) 更多功能完善中...
+			.col-md-7(style="width:33%;margin-left:400px;margin-top:-300px;")
+					div#aroundDetails(style="color:red;font-size:20px;")  为小区业主提供小区周边商家信息，将生活服务本地化，所有商户均在一个街区以内，为业主提供便捷的上门服务，外卖送餐，干洗上门，生鲜配送等，更有业主专享的优惠活动，即让业主坐在家中就可以享受周到全面的生活服务，也让小区周边商家带来新的盈利模式。
+
+		#admin.row.featurette(style="margin-top:45px;")
+			h1
+				h2.featurette-heading(style="font-family:微软雅黑") 物业管理
+			br
+			br
+			p(style="color:red;font-size:20px;")
+				为物业管理处量身定做的管理平台，可轻松发布小区公告通知，接受业主投诉建议，失物招领以及故障报修等信息。在降低运营成本的同时也充分提高物业服务水平和工作效率。
+			div
+				img(id="management1" src='/images/qhyc/management1.png',width="1400px"  height="547px;")
+				p 1.点击进行编辑
+				img(id="management1" src='/images/qhyc/management2.png',width="1400px"  height="647px;")
+
+		#question.row.featurette(style="color:#ffffff;")
+			.col-md-5
+			.col-md-7
+				h2.featurette-heading(style="font-family:微软雅黑") 常见问题
+			.col-lg-offset-1.col-lg-10
+				dl(class="foldpanel",id="my-foldpanel")
+					dt 1.如何使用投诉或建议？
+						dd(style="font-") 打开微信进入前海云城微信公众号后，点击物业信息模块，然后点击投诉建议，里面有一个下拉框，您可以选择填写信息是投诉或者是建议，接下来继续填写您需要的投诉或建议即可。
+					dt 2.如何使用失物招领？
+						dd 打开微信进入前海云城微信公众号后，点击物业信息模块，然后点击失物招领，失物招领分为两栏，一栏为显示失物信息，一栏为发布失物信息。如果您需要发布您丢失的物品信息或您拾到的物品信息，请点击右上角‘发布’，在里面填写物品信息即可。
+					dt 3.如何使用故障报修？
+							dd 打开微信进入前海云城微信公众号后，点击物业信息模块，然后点击故障报修，在里面填写您所发现的在物业管理范围内的故障信息即可。
+						
+					
+		#updates.row.featurette
+
+			.col-lg-12
+				h2.featurette-heading(style="font-family:微软雅黑") 更新记录
+			.col-lg-offset-1.col-lg-10(style="font-family:Helvetica Neue,微软雅黑,Arial,sans-serif;")
+				div(style="height:40px;")
+				div(data-role='collapsible',data-iconpos='right' style="color:red;")
+					h4(style="font-family:微软雅黑") 更新日志 V1.1.1 Beta
+					p(style="margin-left:20px;color:#FCAD00;").
+						伺候日子，正式上线。
+
+				hr(color="#cccccc" size="1" style="margin-top:0px;margin-bottom:0px;border-top:1px solid #B4B8C0;width:98%;")
+				div(data-role='collapsible', data-iconpos='right')
+					h4(style="font-family:微软雅黑") 更多版本，敬请期待。
+					p(style="margin-left:20px;color:#FCAD00;").
+						更多版本，敬请期待。
+				hr(color="#cccccc" size="1" style="margin-top:0px;margin-bottom:0px;border-top:1px solid #B4B8C0;width:98%;")
+		footer#contact.row.featurette(style="margin-top:30px;color:#ffffff;")
+			.row
+				br
+				.text-center.col-sm-12.col-lg-12
+					h2.featurette-heading
+						| 联系我们
+						br
+						span.text-muted 
+					br
+					br
+				.col-12.col-lg-12
+					.col-lg-offset-2.col-lg-2.text-center
+						a(href='tencent://message/?uin=2698883608&Site=前海云城&Menu=yes')
+							img(src='/images/qhyc/QQ.png',width="100px;"  height="100px;" title="点击这里给我发信息")
+						h3 QQ	 
+					
+					.col-lg-2.text-center
+						a(href='http://wx.qq.com' target='_blank')
+							img(src='/images/qhyc/code.jpg',width="100px;"  height="100px;"  title="扫一扫关注我们")
+						h3 微信
+					.col-lg-2.text-center
+						a(target='_blank', href='mailto:qianhaiyuncheng@hotmail.com')
+							img(src='/images/qhyc/email.png',width="100px;"  height="100px;" title="点击给我们发邮件") 
+						h3 E-Mail 
+			.row
+				span.text-center
+					h3.featurette-heading 
+					h4 
+				.text-center.col-sm-12.col-lg-12
+					p
+						| qhyc 版权所有
+						a(target='_blank',href='http://www.miibeian.gov.cn',style="color:black;") 粤ICP备15006671号
+					p
+						|联系电话：0755-23764385
+				

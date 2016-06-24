@@ -1,0 +1,73 @@
+extends content-layout
+
+block content
+    script(type="text/javascript").
+        setTimeout("changeProperty($('#use').val())",1000);
+    div(data-role="page")#main
+        div(data-role="header")
+                h1.
+                    业主认证 
+        form(action="saveAuthentication",method="post",id="form1",enctype="multipart/form-data",data-ajax="false")
+            div(style="width:80%; margin:0 auto; position:relative; left:-12px;")
+                table(style="text-align:center; width:100%;")
+                    //- tr(style="display:none;")
+                    //-     td(style="color:Grey;")
+                    //-         地  址
+                    //-     td(colspan='2' id="test")
+                    //-         select(id="property" name="property" onchange="changeProperty(this.value)" style="width:100%;")
+                    //-             option #{locals.data.property}
+                    //-             each post in data.posts
+                    //-                 option #{post.username} 
+                    //- tr
+                    //-     td(style="color:Grey;")
+                    //-         地  址
+                    //-     td(colspan='2')
+                    //-         select(id="area" name="area" onchange="changeArea(this.value)" style="width:100%; color:Grey;") 
+                    //-             option(selected="selected") 单元
+                    //- tr
+                    //-     td
+                    //-     td(colspan='2')
+                    //-         select(id="building" name="building" onchange="" style="width:100%;")
+                    //-             option(selected="selected" style="color:Grey;") 房号
+                    input(name="openid",id="openid",type="hidden" value="#{data.openid}" )
+                    input(name="use",id="use",type="hidden" value="#{locals.data.property}" )
+                    tr
+                        td(style="color:Grey;")
+                            姓  名
+                        td(colspan='2')
+                            input(style="width:100%;" name="name",id="name",type="text" value="")
+                            div#titlediv(style="color: red; text-align:left;")
+                    tr
+                        td(style="width:25%; color:Grey;")
+                            电  话
+                        td(colspan='2')
+                            input(name="phoneNumber",id="phoneNumber",type="text" value="" )
+                            div#phonediv(style="color: red; text-align:left;")
+                    tr
+                        td(style="width:25%; color:Grey;")
+                            地  址
+                        td(colspan='2')
+                            input(name="address",id="address",type="text" value="" )
+                            div#phonediv(style="color: red; text-align:left;")
+                    //- tr
+                    //-     td(style="width:25%; color:Grey;")
+                    //-         验证码
+                    //-     td(style="width:50%")
+                    //-         input(name="code1",id="code1",type="text" value="" )
+                    //-     td(style="width:25%")
+                    //-         div(style="height:40px;width:100px; border: 1px solid #ccc; display: inline-block;" id="vCode" ) 
+                    tr
+                        td
+                        td(style="width:50%")
+                            input(name="checkNumber",id="checkNumber",type="text" value="" )
+                            div#codediv(style="color: red; text-align:left;")
+                        td(style="width:25%")
+                            button(style="height:40px; color:Grey;" type="button" onclick="getCheckNumber()" id="getCheck" ) 短信验证码
+                            input(name="check",id="check",type="hidden" value="" )
+                    tr
+                        td(colspan='3')
+                            a(href="#",onclick="district()",data-rel="popup",class="ui-shadow ui-btn ui-corner-all ui-mini",id="submit-6",style="background-color:#00a3e4; color:White;") 提交
+                            div(data-role="popup",id="popupBasic",class="ui-content",style="max-width:280px",data-dismissible="false")
+                                p 亲,您填写的认证正在提交中...  
+                                button(type="submit",id="submit-6",class="ui-shadow ui-btn ui-corner-all ui-mini",data-transition="pop", onclick="document.getElementById('form1').submit();" style="background-color:#00a3e4; color:white;") 确定
+                                

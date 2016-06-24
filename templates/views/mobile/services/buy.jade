@@ -1,0 +1,34 @@
+extends content-layout
+
+block content
+	script(language="JavaScript" src="/js/md5.js")
+	script(language="JavaScript" src="/js/weixin_pay.js")
+	div(data-role="page")#main
+		div(data-role="header")
+				include services-header.jade
+				h1.
+					购买
+			div(role="main",class="ui-content")
+			form(action="post_Order",method="post",id="form",enctype="multipart/form-data")
+				label(for="text-basic") 姓名
+				input(name="user",id="user",type="text",placeholder="姓名..." value='#{locals.data.user.name}' == 'undefined ? ' : '#{locals.data.user.name}') 
+				label(for="text-basic") 电话
+				input(name="telephone",id="telephone",type="text",placeholder="电话..." value='#{locals.data.user.phone}' == 'undefined ? ' : '#{locals.data.user.phone}') 
+				label(for="text-basic") 地址
+				input(name="address",id="address",type="text",placeholder="地址..." value='#{locals.data.user.address}' == 'undefined' ? '' : '#{locals.data.user.address}') 
+				label(for="text-basic") 确认商品信息
+				p(name="product_") 商品名：#{locals.data.product.product}
+				p(name="price_") 价  格：#{locals.data.product.price}
+				input(name="product",id="product",type="hidden" value="#{locals.data.product.product}")
+				input(name="price",id="price",type="hidden" value="#{locals.data.product.price}")
+				label(for="text-basic") 备注
+				textarea(cols="40",rows="8",name="note",id="note",data-mini="true",placeholder="备注信息..." style="height: 100px !important")
+				label(for="select-native-s") 付款方式
+				select(name="state",id="state")
+					option 现金付款
+					option 微信支付
+				input(name="productId",id="productId",type="hidden" value="#{locals.data.product._id}")
+				input(name="store",id="store",type="hidden" value="#{locals.data.store._id}")
+				input(name="userId",id="userId",type="hidden" value="#{locals.data.user.openid}")
+				input(name="property",id="property",type="hidden" value="#{locals.data.user.property}")
+				button(type="button",id="submit-6",onclick="pay('#{locals.data.user.openid}','#{locals.data.product.product}','#{locals.data.product.product}','#{locals.data.product.price}')" class="ui-shadow ui-btn ui-corner-all ui-mini",style="float:right; height:45px; width:100px; font-size:1em; background-color:#00a3e4; border:none !important; color:#fff !important; border:none; font-family:'Microsoft YaHei'; border-radius:5px;") 确认下单

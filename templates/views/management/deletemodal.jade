@@ -1,0 +1,14 @@
+div(class="modal fade",id="deleteModal",tabindex="-1",role="dialog",aria-labelledby="deleteModal",aria-hidden="true")
+	div(class="modal-dialog modal-lg")
+		div.modal-content
+			div.modal-header
+				button(type="button",class="close",data-dismiss="modal")
+					span(aria-hidden="true") &times;
+					span.sr-only Close
+				h4.modal-title 删除条目
+			div.modal-body
+				h4#deleteModalText 确定删除当前条目吗？
+			div.modal-footer
+				form#delete(method="get",action="")
+				button#deleteModalButton(type="button",class="btn btn-primary") 删除
+				button(type="button",class="btn btn-default",data-dismiss="modal") 取消

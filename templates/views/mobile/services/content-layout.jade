@@ -1,0 +1,83 @@
+doctype html
+html
+	head
+		title= title
+		meta(name="viewport",content="width=device-width,initial-scale=1")
+		link(rel='stylesheet', href="/styles/jquery.mobile.theme.min.css")
+		link(rel='stylesheet', href="/styles/jquery.mobile.icons.min.css")
+		link(rel='stylesheet', href="/styles/jquery.mobile.structure-1.4.5.min.css")
+		link(rel='stylesheet', href="/styles/idangerous.swiper.css")
+		link(rel='stylesheet', href="/styles/catering-table.css")
+		link(rel='stylesheet', href="/styles/round.css")
+		link(rel='stylesheet', href="/styles/font.css")
+		link(rel='stylesheet', href='/styles/yunCity.css')
+		script(src="/js/jquery-1.11.1.min.js")
+		script(src="/js/jquery.mobile-1.4.5.min.js")
+		script(src="/js/idangerous.swiper.min.js")
+		script(src="/js/mobile-helper.js")
+		script(src="/js/avalon.js")
+		script(src="/js/date-zh-CN.js")
+		script(src="/js/avalon.mobile.js")
+		script(src="/js/helper.js")
+		script(src="/js/formverification.js")
+		script(src="/js/jquery.mobile.subpage.js")
+		script(src="/js/vCode.js")
+		script(type="text/javascript").
+			var vm = avalon.define({
+				$id: 'test',
+				//日常保洁价格
+				price: 0.02,
+				//深度保洁价格
+				price1: 100,
+				//深度保洁面积
+				m: 20,
+				//日常保洁时间
+				h: 2,
+				//优惠价
+				newPrice: 80,
+				//原价
+				oldPrice: 80,
+				date: Date.today().add(0).day().toString('dddd MMMMdd') + '日',
+				today: Date.today().add(0).day().toString('dddd MMMMdd') + '日',
+				dates: [Date.today().add(1).day().toString('dddd MMMMdd') + '日', Date.today().add(2).day().toString('dddd MMMMdd') + '日', Date.today().add(3).day().toString('dddd MMMMdd') + '日', Date.today().add(4).day().toString('dddd MMMMdd') + '日', Date.today().add(5).day().toString('dddd MMMMdd') + '日', Date.today().add(6).day().toString('dddd MMMMdd') + '日'],
+				calcPrice: function(){
+					//根据日常保洁时间优惠价计算
+					vm.price = vm.newPrice = 0.02;
+					//vm.price = vm.newPrice = 40 + 20 * vm.h;
+					//根据日常保洁时间原价计算
+					vm.oldPrice = 40 * vm.h;
+				},
+				checkPrice: function(el){
+					if(isNaN(el.value) || el.value < 20){
+							vm.m = el.value = 20; 
+							alert('请输入正确的住房面积!');
+					}else{
+							if(el.value > 260){
+									alert('您的房子太大了，无法为您服务，非常抱歉!');
+									vm.m = el.value = 20;
+							}
+					}
+					//根据深度保洁面积计算价格
+					vm.price1 = 5*vm.m;
+				},
+				toggle: function(){
+					vm.date = this.value;
+				}
+			});
+
+		style.
+			.swiper-container, .swiper-slide {
+				//height: 200px;
+			}
+			.my-pagination {
+				position: absolute;
+				z-index: 20;
+				left: 10px;
+				bottom: 10px;
+			}
+			.lost a:hover{
+				color:red;
+			}
+	body(ms-controller="test",style="background: #eef3fa;")
+
+		block content

@@ -1,0 +1,54 @@
+extends layout
+
+mixin post(post)
+    .post
+        tr(class="tablerow",data-json=post,data-toggle="modal" data-target="#newItem")
+            td(class="postfull",style="display:none")
+            td #{post.title}
+            td #{post.content}
+            td #{post._.publishedDate.format('YYYY-MM-DD')}
+            td: button(type="button",class="close deletepost",data-toggle="modal",data-target="#deleteModal",data-id=post._id,data-type="Bulletin")
+                            span(class="glyphicon glyphicon-trash",aria-hidden="true")
+                            span.sr-only Close
+                            //data-type需改成相应类型
+block content
+    div(class="container-fluid")
+        .row
+            .col-lg-12
+                h1.page-header
+                    | 短信通知 
+                ol.breadcrumb
+                    li
+                        i.fa.fa-dashboard
+                        a(href='home') 概览
+                    li.active
+                        i.fa.fa-edit
+                        |  短信通知
+        div(class="row")
+            div(class="col-lg-12")
+                .panel.panel-default
+                    .panel-heading
+                        h3.panel-title
+                            | 短信通知
+                    .panel-body            
+                        form(id="postMessag" action="postMessag",method="post",class="form" style="font-family:微软雅黑;")
+                            label(for="title" style="font-family:微软雅黑;") 选择区域
+                            br
+                            select(id="area" name="area" onchange="changeArea(this.value)" style="width:45%; color:black;")
+                                option(selected="selected" style="") 请选择
+                                each post in data.posts
+                                    option() #{post.area}
+                                option( style="") 全体住户
+                            select(id="building" name="building" onchange="" style="width:45%; color:black;")
+                                option(selected="selected") 全体住户
+                            br
+                            label(for="content",style="font-family:微软雅黑;") 内容
+                            textarea(rows="5",name="content",id="content",class="form-control" ,placeholder="请输入短信内容")
+                            br
+                            .text-right
+                                button(style="margin-left:95%;" type="button" class="btn btn-primary" onclick="sub()") 发送
+    include deletemodal.jade
+
+
+
+

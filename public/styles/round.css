@@ -1,0 +1,9 @@
+.image{ 
+	position:relative; 
+	top:45px; 
+	left:45px;
+	width:80px; 
+	height:80px; 
+	border-radius:45px; 
+	border:4px solid #fff;
+}

@@ -1,0 +1,25 @@
+extends content-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				include services-header.jade
+				h1.
+					取消订单
+			div(role="main",class="ui-content")
+				div(data-role="collapsibleset",data-content-theme="a",data-iconpos="right",id="set")
+					div(data-role="collapsible",id="set1",data-collapsed="true")
+						h3 友情提示，拒绝接单，理由选择！
+		div(role="main",class="ui-content")
+			form(action="cancleOrder",method="post",id="friendsForm",enctype="multipart/form-data")
+				label(for="text-basic") 取消理由
+				select(id="refuse" name="refuse" onchange="quxiaodingdan(this.value)")
+						option 现在不方便服务，不在服务时间，谢谢！
+						option 周末暂停服务，请工作日内再订购！
+						option 其它
+				textarea(cols="40",rows="8",name="refuse_more",id="refuse_more",data-mini="true",placeholder="内容描述..."
+				style="display:none; height: 100px !important")
+				input(id="_id",name="_id",type="hidden",value="#{data._id}")
+				input(id="orderNumber",name="orderNumber",type="hidden",value="#{data.orderNumber}")
+				button(type="button",id="submit-6",onclick="document.getElementById('friendsForm').submit();") 确认
+				a(href="order?_id=#{data._id}" class="ui-btn ui-corner-all") 取消

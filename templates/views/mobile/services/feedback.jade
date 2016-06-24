@@ -1,0 +1,29 @@
+extends content-layout
+
+block content
+	div(data-role="page")#complaints
+
+		div(data-role="header")
+			include services-header.jade
+			h1.
+				反馈意见
+		div(role="main",class="ui-content")
+			form(action="feedback_add",method="post",id="form1")
+				br
+				label(for="text-basic") 反馈标题: 
+				br
+				input(name="title",id="title",type="text",placeholder="请输入标题...")
+				div#titlediv(style="color: red") 
+				input(name="url" id="url",type="hidden" style="display:none;")
+				br
+				label(for="textarea-6") 内容描述:
+				br
+				textarea(cols="40" rows="8" name="content",id="content",data-mini="true",placeholder="在此输入内容..."
+				 style="height: 150px !important")
+				div#contentdiv(style="color: red")
+				input(name="publishedDate",id="publishedDate",type="hidden" style="display:none;")
+				input(name="openid",id="openid",type="hidden" value="#{data.openid}" )
+				a(href="#",onclick="checkFeedback()",data-rel="popup",class="ui-shadow ui-btn ui-corner-all ui-mini",id="submit-6") 提交
+					div(data-role="popup",id="popupBasic",class="ui-content",style="max-width:280px",data-dismissible="false")
+						p 亲,感谢您的热情反馈,我们将竭力为您解决。
+						button(type="submit",id="submit-6",class="ui-shadow ui-btn ui-corner-all ui-mini",data-transition="pop",onclick="document.getElementById('form1').submit();") 确定

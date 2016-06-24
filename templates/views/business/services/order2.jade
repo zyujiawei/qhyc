@@ -1,0 +1,74 @@
+html
+	head
+		meta(charset="utf-8")
+		meta(name="author" content="www.frebsite.nl")
+		meta(name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes")
+
+		title= title
+
+		link(type="text/css" rel="stylesheet" href="css/demo.css")
+		link(type="text/css" rel="stylesheet" href="../dist/css/jquery.mmenu.css")
+		link(type="text/css" rel="stylesheet" href="../dist/css/addons/jquery.mmenu.dragopen.css")
+		
+		<!-- for the one page layout -->
+		style(type='text/css').
+			#prehandle,
+			#handling,
+			#handled,
+			#cancled
+			{
+				height: 400px;
+			}
+			#prehandle,
+			#handling,
+			#handled,
+			#cancled
+			{
+				border-top: 1px solid #ccc;
+				padding-top: 150px;
+			}
+		// for the fixed header
+		style(type='text/css').
+			.header,
+			.footer
+			{
+				box-sizing: border-box;
+				width: 100%;
+				position: fixed;
+			}
+			.header
+			{
+				top: 0;
+			}
+			.footer
+			{
+				bottom: 0;
+			}
+		
+		script(type="text/javascript" src="http://hammerjs.github.io/dist/hammer.min.js")
+		script(type="text/javascript" src="http://libs.useso.com/js/jquery/1.7.2/jquery.min.js")
+
+		script(type="text/javascript" src="../dist/js/jquery.mmenu.min.js")
+		script(type="text/javascript" src="../dist/js/addons/jquery.mmenu.dragopen.min.js")
+		script(type="text/javascript" src="../dist/js/addons/jquery.mmenu.fixedelements.min.js")
+
+	body
+		div(id="page")
+			div(class="header Fixed")
+				a(href="#menu")
+				Demo
+			div
+				p #{data._id}
+				p #{data.test}
+			nav(id="menu")
+				ul
+					br
+					p &nbsp;&nbsp;&nbsp;&nbsp;订单列表
+					li
+						a(href="order?state=prehandle&id=#{data._id}")&nbsp;未处理
+					li
+						a(href="order?state=handling&id=#{data._id}")&nbsp;处理中
+					li
+						a(href="order?state=handled&id=#{data._id}")&nbsp;已处理
+					li
+						a(href="order?state=cancle&id=#{data._id}")&nbsp;已取消

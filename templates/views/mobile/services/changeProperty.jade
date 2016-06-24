@@ -1,0 +1,16 @@
+extends content-layout
+
+block content
+    div(data-role="page")#main
+        div(data-role="header")
+                h1.
+                    选择小区 
+        form(action="doChangeProperty",method="post",id="doChangeProperty",data-ajax="false")
+            select(id="property" name="property")
+                option 请选择小区
+                option 山水黔城
+                option 万科
+                option 花果园
+                option 其他
+            input(name="openid",id="openid",type="hidden" value="#{data.openid}" )
+            button(type="button",id="",class="ui-shadow ui-btn ui-corner-all ui-mini" onclick="checkProperty()") 确定

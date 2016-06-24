@@ -1,0 +1,161 @@
+doctype html
+html
+  head
+    title 云城HOME
+    meta(http-equiv='keywords', content='keyword1,keyword2,keyword3')
+    meta(http-equiv='content-type', content='text/html; charset=UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=0')
+    meta(name='format-detection', content='telephone=no,address=no,email=no')
+    meta(name='mobileOptimized', content='width')
+    meta(name='handheldFriendly', content='true')
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='apple-mobile-web-app-status-bar-style', content='black')
+    link(rel='stylesheet', type='text/css', href='/styles/mobile/yunCity.css')
+    script(type='text/javascript', src='/js/mobile/jquery-1.7.2.min.js')
+    script(src='/js/mobile/swipe.min.js')
+    script(src='/js/mobile/toucher.js')
+  body
+    .index
+      #banner.banner
+        .addWrap
+          #mySwipe.swipe
+            #swipe-wrap.swipe-wrap
+              div
+                img(src='../../images/mobile-home/banner.png')
+              div
+                img(src='../../images/mobile-home/banner.png')
+              div
+                img(src='../../images/mobile-home/banner.png')
+              div
+                img(src='../../images/mobile-home/banner.png')
+          ul#position
+            li.cur
+            li
+            li
+            li
+      .index-icon
+        a(href="#",onclick="location='https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{data.weixin[0].replace}&redirect_uri=http%3A%2F%2F#{data.link[0].replace}%2fmobile%2f#{data.property}%2ffixing&response_type=code&scope=snsapi_base&state=feedback#wechat_redirect';")
+          p.icon
+          p.text 故障报修
+        a(href="#",onclick="location='lostandfound';")
+          p.icon.icon-2
+          p.text 失物招领
+        a(href="#",onclick="location='https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{data.weixin[0].replace}&redirect_uri=http%3A%2F%2F#{data.link[0].replace}%2fmobile%2f#{data.property}%2fcomplaints&response_type=code&scope=snsapi_base&state=feedback#wechat_redirect';")
+          p.icon.icon-3
+          p.text 投诉建议
+        a(href="#",onclick="location='bulletin';" )
+          p.icon.icon-4
+          p.text 通知公告
+      .index-serve-type
+        .serve-type
+          a(href="#",onclick="location='contacts'",data-json=data.post)
+            .type09
+              p 联系物业
+        .serve-type
+         a(href="#",onclick="location='unlock'",data-json=data.post)
+            .type10
+              p 一键开锁
+      .index-serve-type
+        .serve-type
+          a(href="#",onclick="location='contacts'",data-json=data.post)
+            .type09
+              p 联系物业
+        .serve-type
+         a(href="#",onclick="location='unlock'",data-json=data.post)
+            .type10
+              p 一键开锁
+      //-
+        .index-placard
+          a(href='eventsCon.html')
+            span.placard-type 寻物
+            span 本人昨天丢了自行车一辆，就在电梯入口旁边丢的
+      .index-serve-type
+        .serve-type
+          a(href="#",onclick="location='contacts'",data-json=data.post)
+            .type09
+              p 联系物业
+        .serve-type
+         a(href="#",onclick="location='unlock'",data-json=data.post)
+            .type10
+              p 一键开锁
+      .index-food
+        .head
+          p.left
+            img(src='../../images/mobile-home/index-1.jpg')
+          p.right  更多> 
+        .con
+          div
+            a(href='#')
+              p
+                img(src='../../images/mobile-home/index-2.jpg')
+              p
+                | 56元
+                span 88元
+          div
+            a(href='#')
+              p
+                img(src='../../images/mobile-home/index-3.jpg')
+              p
+                | 56元
+                span 88元
+          div
+            a(href='#')
+              p
+                img(src='../../images/mobile-home/index-4.jpg')
+              p
+                | 56元
+                span 88元
+      .index-serve-type
+        .serve-type
+          a(onclick="location='https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{data.weixin[0].replace}&redirect_uri=http%3a%2F%2F#{data.link[0].replace}%2fmobile%2flocation%2fuserCenter&response_type=code&scope=snsapi_userinfo&state=center#wechat_redirect' ")
+            .type01
+              p 个人中心
+        .serve-type
+          a(href="#",onclick="location='catering';")
+            .type03
+              p 餐饮美食
+        .serve-type
+          a(href="#",onclick="location='healthy';")
+            .type04
+              p 医疗健康
+        .serve-type
+          a(href="#",onclick="location='house';")
+            .type05
+              p 房屋租赁
+        .serve-type
+          a(href="#",onclick="location='house';")
+            .type06
+              p 家政服务
+        .serve-type
+          a(href="#",onclick="location='entertainment';")
+            .type02
+              p 休闲娱乐
+        .serve-type
+          a(href="#",onclick="location='businessman';")
+            .type08
+              p 商家入驻
+        .serve-type
+          a(href="#",onclick="location='house';")
+            .type07
+              p 更多
+        
+    //-
+      .footer
+        a.l(href='home2')
+          span 云城HOME
+        a.r(onclick="location='https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{data.weixin[0].replace}&redirect_uri=http%3a%2F%2F#{data.link[0].replace}%2fmobile%2flocation%2fuserCenter&response_type=code&scope=snsapi_userinfo&state=center#wechat_redirect' ")
+          span 我的
+  script(type='text/javascript').
+    var bullets = document.getElementById('position').getElementsByTagName('li');
+    var banner = Swipe(document.getElementById('mySwipe'), {
+    auto: 2000,
+    continuous: true,
+    disableScroll:false,
+    callback: function(pos) {
+    var i = bullets.length;
+    while (i--) {
+    bullets[i].className = ' ';
+    }
+    bullets[pos].className = 'cur';
+    }
+    });

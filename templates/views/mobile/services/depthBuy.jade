@@ -1,0 +1,79 @@
+extends content-layout
+
+block content
+	script(language="JavaScript" src="/js/md5.js")
+	script(language="JavaScript" src="/js/weixin_pay.js")
+	div(data-role="page")#main
+		div(data-role="header")
+				include services-header.jade
+				h1.
+					购买
+			div(role="main",class="ui-content")
+			form(action="post_Order",method="post",id="form",enctype="multipart/form-data")
+				label(for="text-basic") 姓名
+				input(name="user",id="user",type="text",placeholder="姓名..." value='#{locals.data.user.name}' == 'undefined' ? '': '#{locals.data.user.name}')
+				div#userdiv(style="color: red")
+				label(for="text-basic") 电话
+				input(name="telephone",id="telephone",type="number",placeholder="电话..." value='#{locals.data.user.phone}' == 'undefined' ? '' : '#{locals.data.user.phone}')
+				div#telephonediv(style="color: red")
+				label(for="text-basic") 地址
+				input(name="address",id="address",type="text",placeholder="地址..." value='#{locals.data.user.address}' == 'undefined' ? '' : '#{locals.data.user.address}')
+				div#addressdiv(style="color: red")
+				label(for="text-basic") 确认商品信息
+				p(name="product_")  商品名：#{locals.data.product.product}
+				table(style="margin-left:0;")
+					tr
+						td(style="width:26%")
+							label(for="text-basic") 开始时间
+						td(colspan='3')
+							select(ms-on-change="toggle")
+								option {{today}}
+								option(ms-repeat="dates") {{el}}
+							input(name="date", type="hidden", ms-duplex="date")
+					tr
+						td(style="width:26%")
+						td(style="width:37%")
+							select(id="hour" name="hour")
+								option(value='08') 08点
+								option(value='09') 09点
+								option(value='10') 10点
+								option(value='11') 11点
+								option(value='12') 12点
+								option(value='13') 13点
+								option(value='14') 14点
+								option(value='15') 15点
+								option(value='16') 16点
+								option(value='17') 17点
+								option(value='18') 18点
+								option(value='19') 19点
+						td
+						td(style="width:37%")
+							select(id="minute" name="minute")
+								option(value='00') 00分
+								option(value='15') 15分
+								option(value='30') 30分
+								option(value='45') 45分
+					tr
+						td(style="width:26%")
+							label(for="text-basic") 平方米:
+							//avalon数据双向绑定，实现实时显示价格
+						td(style="width:37%")
+							input(type="text" ms-duplex-number="m" ms-on-change="checkPrice(this)")
+						td
+						td(style="width:37%")
+				p(style="color:red;font-size:14px")我们的服务面积为20-260平米，超出将无法服务！
+				p 开荒价：{{5*m}}元
+				input(name="product",id="product",type="hidden" value="#{locals.data.product.product}")
+				//保存计算后价格提供下单使用
+				input(id="secretPrice", name="price", type="hidden", ms-duplex="price1")
+				label(for="select-native-s") 付款方式
+				select(name="state",id="state")
+					option 现金付款
+					option 微信支付
+				label(for="text-basic") 备注
+				textarea(cols="40",rows="8",name="note",id="note",data-mini="true",placeholder="备注信息..." style="height: 100px !important")
+				input(name="productId",id="productId",type="hidden" value="#{locals.data.product._id}")
+				input(name="store",id="store",type="hidden" value="#{locals.data.store._id}")
+				input(name="userId",id="userId",type="hidden" value="#{locals.data.user.openid}")
+				input(name="property",id="property",type="hidden" value="#{locals.data.user.property}")
+				button(type="button",id="submit-6",onclick="pay('#{locals.data.user.openid}','#{locals.data.product.product}','#{locals.data.product.product}','daily')" class="ui-shadow ui-btn ui-corner-all ui-mini",style="float:right; height:45px; width:100px; font-size:1em; background-color:#00a3e4; border:none !important; color:#fff !important; border:none; font-family:'Microsoft YaHei'; border-radius:5px;") 确认下单

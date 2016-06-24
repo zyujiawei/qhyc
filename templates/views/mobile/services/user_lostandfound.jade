@@ -1,0 +1,38 @@
+extends content-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				include services-header.jade
+				h1.
+					我的失物招领
+			div(role="main",class="ui-content")
+				ul(data-role="listview")
+					each post in data.posts
+						li
+							a(href="#postcontent",onclick="loadData(this)",class="postLink",data-transition="slide",data-json=post,data-image=post.image.filename,data-date=post._.publishedDate.format('YYYY-MM-DD'))
+								div(style="height:90px;width:12px;background-color:#35afe0;position: absolute;left:0px;top:0px;display:none;")
+								img(src="/advert/#{post.image.filename}",style="height:60px;width:60px; position: absolute;left: 25px;top:10px; border-radius: 6px; -webkit-border-radius: 6px; -moz-border-radius: 6px;")
+								div(style="position: absolute;left: 110px; top:8px;font-size:23px;")
+									p #{post.title}
+								div(style="position: absolute;left: 110px; top:40px;color: #999999;font-size:18px;")
+									p(style="color: Grey") #{post._.publishedDate.format('YYYY-MM-DD')}
+		div(data-role="subpage")#postcontent
+			div(data-role="header")
+				include services-header.jade
+				h1#header
+			div(role="main",class="ui-content")
+				h2#title
+				h4#publishDate
+				span状态:
+				span#examine2
+				hr
+				img(id="showImage",style="height:300px;width:100%;")
+				hr
+				p#content
+				br
+				span联系人:
+				span#author
+				br
+				span联系电话:
+				span#contact

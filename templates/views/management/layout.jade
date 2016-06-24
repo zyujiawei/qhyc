@@ -1,0 +1,83 @@
+doctype html
+html
+	head
+		title= "物业管理后台"
+		meta(name="viewport",content="width=device-width,initial-scale=1")
+		link(rel='stylesheet', href="/styles/bootstrap.css")
+		link(rel='stylesheet', href="/styles/bootstrap-datetimepicker.min.css")
+		link(rel='stylesheet', href="/styles/helper.css")
+		link(rel='stylesheet', href="/styles/sb-admin.css")
+		link(rel='stylesheet', href="/styles/morris.css")
+		link(rel='stylesheet', href="/styles/font-awesome.css")
+		script(src="/socket.io/socket.io.js")
+		script(src="/js/jquery-1.11.1.min.js")
+		script(src="/js/bootstrap-datetimepicker.js")
+		script(src="/js/bootstrap-datetimepicker.zh-CN.js",charset="UTF-8")
+		script(src="/js/jquery.form.js")
+		script(src="/js/bootstrap.min.js")
+		script(src="/js/helper.js")
+		script(src="/js/mobile-helper.js")
+		script(src="/js/plugins/morris/raphael.min.js")
+		script(src="/js/plugins/morris/morris.min.js")
+		script(src="/js/plugins/morris/morris-data.js")
+		script(type='text/javascript').
+			var b_name =navigator.appName;
+			var b_version =navigator.appVersion;
+			var version =b_version.split(";");
+			var trim_version =version[1].replace(/[]/g,"");
+			if (b_name == "Microsoft Internet Explorer") {
+			if (trim_version == "MSIE8.0" || trim_version == "MSIE7.0" || trim_version == "MSIE6.0") {
+				alert("您的IE浏览器版本过低，为获得更好的使用体验请下载新版浏览器打开。");
+				//然后跳到需要连接的下载网站
+				window.location.href="http://www.firefox.com.cn/";
+				}
+			}
+		script(type="text/javascript").
+
+			var socket = io('http://www.szqhyc.com');
+			socket.emit('display', { property:'#{user.username}' });//向服务器发送数据，实现双向数据传输
+			socket.on('#{user.username}remindlostandfound', function (data) {
+				if($('#lostandfoundnum')){
+					$('#lostandfoundnum').text(data.remindlostandfound);
+				}
+			});
+			socket.on('#{user.username}remindfixing', function (data) {
+				if($('#fixingnum')){
+					$('#fixingnum').text(data.remindfixing);
+				}
+			});
+			socket.on('#{user.username}remindcomplaint', function (data) {
+				if($('#complaintnum')){
+					$('#complaintnum').text(data.remindcomplaint);
+				}
+			});
+			socket.on('#{user.username}remindbusiness', function (data) {
+				if($('#businessnum')){
+					$('#businessnum').text(data.remindbusiness);
+				}
+			});
+			socket.on('#{user.username}remindtotal', function (data) {
+				if($('#unread')){
+					$('#unread').html(data.remindtotal);
+				}	
+			});
+			var timeout = null;
+			var xmlHttp = false;
+			function createXmlHttp(){
+				xmlHttp = false;
+				if (window.ActiveXObject) {
+					try{xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");}
+					catch (e){
+					xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+				}else if(window.XMLHttpRequest){
+					xmlHttp = new XMLHttpRequest();
+				}
+			}
+			
+	body
+		#wrapper
+			include navbar.jade
+			#page-wrapper
+				block content
+				block modal

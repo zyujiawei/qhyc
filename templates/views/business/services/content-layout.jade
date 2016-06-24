@@ -1,0 +1,49 @@
+doctype html
+html
+	head
+		title= title
+		meta(name="viewport",content="width=device-width,initial-scale=1")
+		link(rel='stylesheet', href="/styles/jquery.mobile.theme.min.css")
+		link(rel='stylesheet', href="/styles/jquery.mobile.icons.min.css")
+		link(rel='stylesheet', href="/styles/jquery.mobile.structure-1.4.5.min.css")
+		link(rel='stylesheet', href="/styles/idangerous.swiper.css")
+		link(rel='stylesheet', href="/styles/catering-table.css")
+		link(rel='stylesheet', href="/styles/round.css")
+		link(rel='stylesheet', href="/styles/font.css")
+		link(rel='stylesheet', href="/styles/yunCity.css")
+		script(src="/js/jquery-1.11.1.min.js")
+		script(src="/js/jquery.mobile-1.4.5.min.js")
+		script(src="/js/idangerous.swiper.min.js")
+		script(src="/js/mobile-helper.js")
+		script(src="http://www.hubwiz.com/scripts/angular.min.js")
+		script(src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js")
+		script(src="/js/helper.js")
+		script(src="/js/formverification.js")
+		script(src="/js/jquery.mobile.subpage.js")
+		script(type="text/javascript").
+			var socket = io('http://www.szqhyc.com',{
+						'connect timeout': 500,
+						'reconnect': true,
+						'reconnection delay': 500,
+						'reopen delay': 500,
+						'max reconnection attempts': 10
+					});
+		script(type="text/javascript").
+			angular.module('myApp', []).controller('orders', function($scope) {
+			});
+		style.
+			.swiper-container, .swiper-slide {
+				//height: 200px;
+			}
+			.my-pagination {
+				position: absolute;
+				z-index: 20;
+				left: 10px;
+				bottom: 10px;
+			}
+			.lost a:hover{
+				color:red;
+			}
+	body
+
+		block content

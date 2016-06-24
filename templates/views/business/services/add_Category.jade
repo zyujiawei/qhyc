@@ -1,0 +1,19 @@
+extends content-layout
+
+block content
+	div(data-role="page")
+		div(data-role="header")
+			div(data-role="header")
+				a(href="home",class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all",data-rel="back",data-ajax="false")
+			h1.
+				类别新增
+		div(role="main",class="ui-content")
+			form(action="category_add",method="post",id="categoryform",enctype="multipart/form-data")
+				label(for="text-basic") 类别名称
+				input(name="category",id="category",type="text",placeholder="名称...")
+				label(for="select-native-s") 店铺名称
+				select(name="title",id="title")
+					each post in data.posts
+						option #{post.title}
+				input(id="_id",name="_id",type="hidden",value="#{data._id}")
+				button(type="button",id="submit-6",onclick="document.getElementById('categoryform').submit();") 确定

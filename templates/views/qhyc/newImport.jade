@@ -1,0 +1,62 @@
+doctype html
+html
+	head
+		meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+		meta(name='viewport', content='initial-scale=1.0, user-scalable=no')
+		meta(charset='utf-8')
+		meta(name='keywords', content='深圳前海云城信息技术有限公司')
+		meta(name='description', content='深圳前海云城信息技术有限公司')
+		title 深圳前海云城信息技术有限公司
+		link(rel='stylesheet', type='text/css', href='/styles/newMain/reset.css')
+		link(rel='stylesheet', type='text/css', href='/styles/newMain/style.css')
+		link(rel='stylesheet', type='text/css', href='/styles/newMain/index.css')
+		script(src="/js/mobile-helper.js")
+		script(src='/js/newMain/jquery-1.7.2.min.js', type='text/javascript')
+		script(src='/js/newMain/lazyload.js', type='text/javascript')
+		//判断用户浏览器版本
+		script(type='text/javascript').
+			var browser=navigator.appName
+			var b_version=navigator.appVersion
+			var version=b_version.split(";");
+			var trim_Version=version[1].replace(/[ ]/g,"");
+			if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE8.0"){
+				alert("您的IE浏览器版本过低，为获得更好的使用体验请下载新版浏览器打开。");
+				window.location.href="http://www.firefox.com.cn/";
+			}else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE7.0"){
+				alert("您的IE浏览器版本过低，为获得更好的使用体验请下载新版浏览器打开。");
+				window.location.href="http://www.firefox.com.cn/";
+			}else if(browser=="Microsoft Internet Explorer" && trim_Version=="MSIE6.0"){
+				alert("您的IE浏览器版本过低，为获得更好的使用体验请下载新版浏览器打开。");
+				window.location.href="http://www.firefox.com.cn/";
+			}
+		//网页弹出层css代码
+		//link(rel='stylesheet', type='text/css', href='/styles/reveal.css')
+		//script(type='text/javascript', src='/js/jquery-1.4.4.min.js')
+		//script(type='text/javascript', src='/js/jquery.reveal.js')
+		link(rel='stylesheet', href="/styles/jquery.mobile.structure-1.4.5.min.css")
+		//- script(type='text/javascript', src="/js/jquery.mobile-1.4.5.min.js")
+		//折叠模板的CSS代码
+		link(href='/styles/main.css', type='text/css', rel='stylesheet')
+		script(type='text/javascript', src='http://api.map.baidu.com/api?v=2.0&ak=NluIjmGLtqQtigeeYYVwLpNr')
+
+
+		
+
+		//折叠模板的JS代码
+		script(src='/js/foldpanel.js', type='text/javascript')
+		script(type="text/javascript").
+			jQuery(function($){
+				$("dl#my-foldpanel").foldpanel({
+					// 初始第一个展开, 默认为 true
+					//init: true,
+					// panel展开动画时间, 默认为 100ms
+					time: 100,
+					// 在此点击关闭, 默认为 true
+					dbclose: true,
+				});
+			})
+		
+		
+
+	body
+		block content

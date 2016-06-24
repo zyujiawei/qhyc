@@ -1,0 +1,61 @@
+extends content-layout
+
+block content
+	div(data-role="page")#main
+		div(data-role="header")
+				include services-header.jade
+				h1.
+					医疗健康
+			div(role="main",class="ui-content")
+				ul(data-role="listview")
+					each post in data.posts
+						li 
+							a(href="#postcontent",onclick="loadData(this)",data-storeId=post.id,data-json=post,data-date=post._.publishedDate.format('YYYY-MM-DD'),data-image=post.image.filename,class="height:100px;width:")
+								//display:none;block
+								div(style="height:90px;width:12px;background-color:#35afe0;position: absolute;left:0px;top:0px;display:none;")
+								img(src="/advert/#{post.image.filename}",style="height:60px;width:60px; position: absolute;left: 25px;top:10px; border-radius: 6px; -webkit-border-radius: 6px; -moz-border-radius: 6px;")
+								div(style="position: absolute;left: 110px; top:1px;font-size:23px;")
+									p #{post.title}
+								div(style="position: absolute;left: 110px; top:28px; font-size:15px; color: #666666; font-size:17px;")
+									p Tel：#{post.telephone}
+								div(style="position: absolute;left: 110px; top:45px;color: #999999;font-size:18px;")
+									p #{post.address}
+		div(data-role="subpage")#postcontent
+			div(data-role="header")
+				include services-header.jade
+				h1#header
+			div(role="main",class="ui-content")
+				h2#title
+				img(id="showImage",style="height:200px;width:100%;")
+
+				hr
+				//CSS文件在catering-table.css
+				table(class="table-a-table")
+					tr
+						td(class="tab1-td") 联系人
+						td(class="tab2-td")#contact
+					tr
+						td(class="tab1-td") 联系电话
+						td(class="tab2-td")
+							a(#telephone,style="text-decoration: none")#telephone
+					tr
+						td(class="tab1-td") 手机
+						td(class="tab2-td")
+							a(#cellphone,style="text-decoration: none")#cellphone
+					tr
+						td(class="tab1-td") 联系QQ
+						td(class="tab2-td")#qq
+					tr
+						td(class="tab1-td") 商家地址
+						td(class="tab2-td")#address
+				a(href="#" class="ui-btn ui-corner-all",style="text-align:left") 服务项目
+				a(href="#" class="ui-btn ui-corner-all",style="text-align:left") 商家评价
+
+				div(data-role="collapsibleset",data-content-theme="a",data-iconpos="right",id="set")
+					div(data-role="collapsible",id="set1",data-collapsed="true")
+						h3 商家详情:
+						p#detail
+				div(data-role="collapsibleset",data-content-theme="a",data-iconpos="right",id="set2" )
+					div(data-role="collapsible",id="set1",data-collapsed="true")
+						h3 商品购买:
+						div#menu

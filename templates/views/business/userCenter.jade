@@ -1,0 +1,48 @@
+extends mobile-layout
+
+block content
+	div(data-role="page")#main
+		input#_id(name="_id",type="hidden" vaule="#{locals.data.user._id}")
+		input#name(name="name",type="hidden" vaule="#{locals.data.user.name}")
+		div(data-role="header",id="mobileheader")
+			include userhead.jade
+		div(role="main",class="ui-content",id="mobilebody",style="margin-top:-25px")
+			include userlist.jade
+		div(data-role="footer",data-position="fixed",id="mobilefooter",data-tap-toggle="false",style="filter:alpha(opacity=90); -moz-opacity:0.90; opacity:0.90;")
+			div(data-role='footer' style="background-color:#e7e5e5; !important")#footernav
+				div(data-role='navbar')
+					div(style="height:1px;background-color:#e7e5e5;")
+					ul
+						li
+							a(class=(section == 'home' ? 'ui-btn-fontcolor' : null),class="fonter",data-ajax="false" onclick="location='../#{locals.data.user.property}/home'" style="background-image: url(/images/fonter/wuye.png); background-size:25px; color:#4e4e4e;") 物业服务
+						li
+							a(class=(section == 'around' ? 'ui-btn-fontcolor2' : null ),class="fonter",data-ajax="false" onclick="location='../#{locals.data.user.property}/around'" style="background-image: url(/images/fonter/shenghuo.png); background-size:25px; color:#4e4e4e;"  ) 本地服务
+						li
+							a(class=(section == 'userCenter' ? 'ui-btn-fontcolor3' : null ),class="fonter",data-ajax="false" style="background-image: url(/images/fonter/wodeB.png); background-size:25px; color:#4e4e4e;" onclick="location='https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{data.weixin[0].replace}&redirect_uri=http%3a%2F%2F#{data.link[0].replace}%2fmobile%2flocation%2fuserCenter&response_type=code&scope=snsapi_userinfo&state=center#wechat_redirect' ") 个人中心
+							span#unread(class="badges")
+		script(type="text/javascript").
+				var socket = io.connect('http://www.szqhyc.com',{
+						'connect timeout': 500,
+						'reconnect': true,
+						'reconnection delay': 500,
+						'reopen delay': 500,
+						'max reconnection attempts': 10
+					});//设置连接超时
+				$.session.set('openid','#{locals.data.user.openid}');
+				socket.on(''+$.session.get('openid')+'statelostandfound', function (data) {
+					if($('#lostandfoundnum')){
+						$('#lostandfoundnum').text(data.statelostandfound);
+					}
+				});
+				socket.on(''+$.session.get('openid')+'statefixing', function (data) {
+					if($('#fixingnum')){
+						$('#fixingnum').text(data.statefixing);
+
+					}
+				});
+				socket.on(''+$.session.get('openid')+'statetotal', function (data) {
+					if($('#unread')){
+						$('#unread').html(data.statetotal);
+					}
+				});
+		script(type='text/javascript', src='/js/mobile_remind.js')

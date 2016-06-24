@@ -1,0 +1,64 @@
+//-	
+	.index-icon
+		a(href='javascript:;' onclick="location='bulletin'")
+			p.icon
+			p.text 物业通告
+		a(href='javascript:;' onclick="location='https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{data.weixin[0].replace}&redirect_uri=http%3A%2F%2F#{data.link[0].replace}%2fmobile%2f#{data.property}%2ffixing&response_type=code&scope=snsapi_base&state=feedback#wechat_redirect'")
+			p.icon.icon-2
+			p.text 故障报修
+		a(href='javascript:;' onclick="location='https://open.weixin.qq.com/connect/oauth2/authorize?appid=#{data.weixin[0].replace}&redirect_uri=http%3A%2F%2F#{data.link[0].replace}%2fmobile%2f#{data.property}%2ffixing&response_type=code&scope=snsapi_base&state=feedback#wechat_redirect'")
+			p.icon.icon-3
+			p.text 投诉建议
+		a(href='javascript:;' onclick="location='lostandfound'")
+			p.icon.icon-4
+			p.text 失物招领
+//.index-placard
+	//a(href='eventsCon.html')
+		//span.placard-type 寻物
+		//span 本人昨天丢了自行车一辆，就在电梯入口旁边丢的
+.index-icon-2
+	a(href='javascript:;' onclick="location='economics'")
+		p.icon
+		p.text 家政服务
+.index-icon-2
+	a(href='javascript:;' onclick="location='fixing'")
+		p.icon-2
+		p.text 维修服务
+.index-icon-2
+	a(href='javascript:;' onclick="location='house'")
+		p.icon-3
+		p.text 房屋租赁
+.index-icon-2
+	a(href='javascript:;' onclick="location='more'")
+		p.icon-4
+		p.text 更多>>
+
+//.index-food
+	//-
+		.head
+			p.left
+				img(src='../../../images/images/index-1.jpg')
+			p.right	更多>
+		.con
+			div(style="width:100%;")
+				a(href='#')
+					p
+						img(src='../../../images/images/index-2.jpg')
+					p
+						| 56元
+						span 88元
+	//-
+		div
+			a(href='#')
+				p
+					img(src='../../../images/images/index-3.jpg')
+				p
+					| 56元
+					span 88元
+		div
+			a(href='#')
+				p
+					img(src='../../../images/images/index-4.jpg')
+				p
+					| 56元
+					span 88元

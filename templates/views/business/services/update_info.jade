@@ -1,0 +1,36 @@
+extends content-layout
+
+block content
+	div(data-role="page")
+		div(data-role="header")
+			div(data-role="header")
+				a(href="#",class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all",data-rel="back",data-ajax="false")
+				h1.
+					修改个人信息			
+
+		div(role="main",class="ui-content")
+			form(action="information",method="post",id="form1",enctype="multipart/form-data")
+				label(for="text-basic") 真实姓名
+				input(name="name",id="name",type="text",placeholder="真实姓名",value="#{data.posts.name}")
+				label(for="text-basic") Email
+				input(name="email",id="email",type="text",value="#{data.posts.email}",readonly="true")
+				label(for="text-basic") 用户昵称
+				input(name="nickname",id="nickname",type="text",placeholder="昵称",value="#{data.posts.nickName}")
+				label(for="text-basic") 用户性别
+				select(id="sex" name="sex")
+						option #{data.posts.sex}
+						option 男
+						option 女
+				label(for="text-basic") 所属省份
+				select(id="edit_province" name="inProvince" onchange="editProvince(this.value)")
+					option #{data.posts.procince}
+						each post in data.provinces
+							option #{post.province}
+				label(for="text-basic") 所属城市
+				select(id="edit_city" name="inCity")
+					option #{data.posts.city}											
+				label(for="text-basic") 手机号
+				input(name="phone",id="phone",type="text",value="#{data.posts.phone}")
+				input(id="_id",name="_id",type="hidden",value="#{data.posts._id}")
+				</br>
+				button(type="button",id="edit_submit",onclick="document.getElementById('form1').submit();") 保存

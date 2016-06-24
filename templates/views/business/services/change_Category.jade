@@ -1,0 +1,18 @@
+extends content-layout
+
+block content
+	div(data-role="page")
+		div(data-role="header")
+			div(data-role="header")
+				a(href="home",class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all",data-rel="back",data-ajax="false")
+			h1.
+				类别修改
+		div(role="main",class="ui-content")
+			form(action="category_change",method="post",id="categoryform",enctype="multipart/form-data")
+				label(for="text-basic") 类别名称
+				input(name="category",id="category",type="text",value="#{data.category.category}")
+				label(for="select-native-s") 店铺名称
+				input(name="title",id="title",type="text",value="#{data.store}",readonly="true")
+				input(id="categoryid",name="categoryid",type="hidden",value="#{data.category._id}")
+				input(id="_id",name="_id",type="hidden",value="#{data._id}")
+				button(type="button",id="submit-6",onclick="document.getElementById('categoryform').submit();") 确定

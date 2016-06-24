@@ -1,0 +1,81 @@
+doctype html
+html
+head
+	meta(charset='utf-8')
+	title 支付test
+	meta(name="viewport",content="width=device-width,initial-scale=1")
+	script(src="/js/jquery-1.11.1.min.js")
+	script(src="/js/md5.js")
+	script(src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js")
+	link(rel='stylesheet', href="/styles/jquery.mobile.theme.min.css")
+	body
+		input#parame(type="hidden",name="parame",value="#{locals.data.parame}"  widt="80px;" height="80px;")
+		h1(style="text-align:center;color:red;") 支付测试：0.01元
+		br
+		div(style="text-align:center;")
+			button(type="button",id="submit-6",style="width:200px; height:40px; float-lfet:50px;" class="ui-shadow ui-btn ui-corner-all ui-mini",data-transition="pop",onclick="javascript:pay();return false;") 支付
+	script(type='text/javascript').
+		var xmlData=$("#parame").val();
+		var xmlDoc;
+		var appId =null;
+		var nonceStr =null;
+		var pg=null;
+		var time=(Date.parse(new Date()))/1000; 
+		if (typeof xmlData == "string") {   
+			if (document.implementation.createDocument) {  
+				var parser = new DOMParser();  
+				xmlDoc = parser.parseFromString(xmlData, "text/xml"); 
+				appId=xmlDoc.getElementsByTagName("appid")[0].childNodes[0].nodeValue;
+				nonceStr=xmlDoc.getElementsByTagName("nonce_str")[0].childNodes[0].nodeValue;
+				pg=xmlDoc.getElementsByTagName("prepay_id")[0].childNodes[0].nodeValue;
+
+			} else if (window.ActiveXObject) {  
+				xmlDoc = new ActiveXObject("Microsoft.XMLDOM");  
+				xmlDoc.async = false;  
+				xmlDoc.loadXML(xmlData); 
+			}  
+		}else {
+			xmlDoc = xmlData;
+			}
+		function onBridgeReady(){
+			var info = {
+				appId:appId,
+				nonceStr:nonceStr,
+				package:"prepay_id="+pg,
+				signType:"MD5",
+				timeStamp: time
+			};
+			info.sign = getSign(info);
+			function getSign(o){
+				var base = '';
+				for(var key in o){
+					base = base+key+'='+o[key]+'&';
+				}
+				base = base + 'key=qianhaiyunchengqianhaiyunchengqi';
+				return hex_md5(base).toUpperCase();
+			}
+			WeixinJSBridge.invoke('getBrandWCPayRequest',{
+				"appId" : appId,	 //公众号名称，由商户传入	 
+				"timeStamp": ""+time, //时间戳，自1970年以来的秒数	 
+				"nonceStr" : nonceStr, //随机串	 
+				"package" : "prepay_id=" + pg,	 
+				"signType" : "MD5",		 //微信签名方式:	 
+				"paySign" : info.sign
+				},function(e){
+				// 在这里拿到e.err_msg，这里面就包含了所有的网络类型
+				//alert(e.err_msg);
+			});
+		}
+		function pay(){
+			if (typeof (WeixinJSBridge) == "undefined"){
+				if( document.addEventListener ){
+					document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+				}else if (document.attachEvent){
+					document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+					document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+				}
+			}else{
+				onBridgeReady();
+			}
+			
+		}

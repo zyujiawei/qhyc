@@ -1,0 +1,31 @@
+extends content-layout
+
+block content
+    div(data-role="page")#main
+        div(data-role="header")
+                h1.
+                    业主信息
+        div(style="width:80%; margin:0 auto; position:relative; left:-12px;")
+                table(style="text-align:center; width:100%;")
+                    tr
+                        td
+                            姓名
+                        td
+                            p #{locals.data.posts2.name}
+                    tr
+                        td
+                            电话
+                        td
+                            p #{locals.data.posts2.phone}
+                    tr
+                        td
+                            住址
+                        td
+                            p #{locals.data.posts2.address}
+                    tr
+                        td(colspan="2")
+                            input(name="openid",id="openid",type="hidden" value="#{data.openid}" )
+                    tr(style="display:none;")
+                        td(colspan="2")
+                            button(style="line-height:7px; height:30px;width:100%;text-align:center;border:solid 1px #00a3e4;color:White;background:#00a3e4;" onclick="location='authentication?openid=#{data.openid}&district=#{locals.data.posts2.district}';")
+                                    修改

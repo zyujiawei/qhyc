@@ -1,0 +1,38 @@
+extends content-layout
+
+block content
+	div(data-role="page")
+		div(data-role="header")
+			div(data-role="header")
+				a(href="home",class="ui-btn ui-icon-arrow-l ui-btn-icon-notext ui-corner-all",data-rel="back",data-ajax="false")
+			h1.
+				商品信息添加
+		div(role="main",class="ui-content")
+			form(action="product_change",method="post",id="form1",enctype="multipart/form-data")
+				label(for="text-basic") 商品名称
+				input(name="product",id="product",type="text",placeholder="名称...",value="#{data.productPosts.product}")
+				div#titlediv(style="color: red")
+				label(for="select-native-s") 所属商铺
+				select(name="store",id="store",onchange="bcategory(this.value)")
+					option #{data.store}
+					each post in data.posts
+						option #{post.title}
+				div#titlediv(style="color: red")
+				label(for="select-native-s") 所属类别
+				select(name="category",id="category")
+					option #{data.category}
+				label(for="textarea-6") 商品样图
+				img#image(src="/advert/#{locals.data.productPosts.image.filename}" style="width:170px;height:200px;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);")
+				input(data-clear-btn='true' type="file",accept="image/*" name="images" id="images" onchange="previewImage(this)")
+				label(for="text-basic") 商品价格
+				input(name="price",id="price",type="text",placeholder="价格...",value="#{data.productPosts.price}")
+				div#authordiv(style="color: red")
+				label(for="textarea-6") 商品介绍
+				textarea(cols="40",rows="8",name="evalue",id="evalue",data-mini="true",placeholder="该商家很懒,未添加介绍。"
+				style="height: 100px !important") #{data.productPosts.evalue}
+				div#contentdiv(style="color: red")
+				input(id="_id",name="_id",type="hidden",value="#{data._id}")
+				input(id="productid",name="productid",type="hidden",value="#{data.productPosts._id}")
+				input(name="url" id="url",type="hidden")
+				input(name="publishedDate",id="publishedDate",type="hidden")
+				button(type="button",id="submit-6",onclick="document.getElementById('form1').submit();") 确定
